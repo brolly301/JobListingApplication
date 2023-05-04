@@ -1,11 +1,7 @@
-import classNames from "classnames";
-
-export default function JobInput({ className, ...rest }) {
-  const finalClassName = classNames("border", className);
-
+export default function JobInput({ ...rest }) {
   return (
-    <div class>
-      <input className={finalClassName} {...rest} type="text" />
+    <div>
+      <input className="job-input" {...rest} type="text" />
     </div>
   );
 }

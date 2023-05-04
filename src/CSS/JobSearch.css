@@ -1,0 +1,32 @@
+.job-search {
+  text-align: center;
+}
+
+.job-search-title {
+  font-size: 84px;
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+}
+
+.job-input {
+  position: relative;
+  width: 400px;
+  height: 40px;
+  margin: 7px;
+  border: 1px solid black;
+}
+
+.job-search-button {
+  border: 1px solid black;
+  width: 405px;
+  height: 40px;
+  font-size: 18px;
+  color: white;
+  font-weight: bolder;
+  background-color: rgb(129, 173, 212);
+  margin-top: 7px;
+}
+
+.job-search-button:hover {
+  background-color: rgb(114, 154, 189);
+}

@@ -1,14 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,700&display=swap");
 
 body {
-  background-image: url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8am9ic3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+  font-family: "Roboto";
+  background-image: url("https://images.pexels.com/photos/4050320/pexels-photo-4050320.jpeg?auto=compress&cs=tinysrgb&w=1600");
   position: relative;
   top: 30px;
   width: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center -30px;
+  background-position: center -100px;
   background-size: 100%;
 }
