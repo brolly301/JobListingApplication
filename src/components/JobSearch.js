@@ -7,7 +7,7 @@ export default function JobSearch({ onSubmit }) {
   const [formData, setFormData] = useState({
     title: "",
     category: "",
-    location: "",
+    jobLocation: "",
   });
 
   //Read up on why the setForm function works for multiple states
@@ -19,7 +19,7 @@ export default function JobSearch({ onSubmit }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData.title);
+    onSubmit(formData.title, formData.jobLocation);
   };
 
   return (
@@ -39,8 +39,8 @@ export default function JobSearch({ onSubmit }) {
           placeholder="  Category"
         />
         <JobInput
-          value={formData.location}
-          id="location"
+          value={formData.jobLocation}
+          id="jobLocation"
           onChange={handleChange}
           placeholder="  Location"
         />

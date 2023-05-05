@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const JobResults = async (term) => {
+const JobResults = async (term, jobLocation) => {
   const response = await axios.get(
     "http://api.adzuna.com/v1/api/jobs/gb/search/1?content-type=application/json",
     {
@@ -9,6 +9,7 @@ const JobResults = async (term) => {
         app_key: "27f3682a5ac4b72c7a816d5c568d14c6",
         results_per_page: 20,
         what: term,
+        where: jobLocation,
       },
     }
   );

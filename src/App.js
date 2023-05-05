@@ -1,13 +1,14 @@
 import JobSearch from "./components/JobSearch";
-import "./index.css";
+import JobList from "./components/JobList";
 import JobResults from "./AdzunaAPI";
 import { useState } from "react";
+import "./index.css";
 
 function App() {
   const [results, setResults] = useState([]);
 
-  const handleSubmit = async (term) => {
-    const result = await JobResults(term);
+  const handleSubmit = async (term, jobLocation) => {
+    const result = await JobResults(term, jobLocation);
     setResults(result);
     console.log(results);
   };
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <JobSearch onSubmit={handleSubmit} />
+      <JobList results={results} />
     </div>
   );
 }
