@@ -6,7 +6,6 @@ import "../CSS/JobSearch.css";
 export default function JobSearch({ onSubmit }) {
   const [formData, setFormData] = useState({
     title: "",
-    category: "",
     jobLocation: "",
   });
 
@@ -32,12 +31,7 @@ export default function JobSearch({ onSubmit }) {
           onChange={handleChange}
           placeholder="  Job Title"
         />
-        <JobInput
-          value={formData.category}
-          id="category"
-          onChange={handleChange}
-          placeholder="  Category"
-        />
+
         <JobInput
           value={formData.jobLocation}
           id="jobLocation"
