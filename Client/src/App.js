@@ -25,9 +25,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* <JobSearch onSubmit={handleSubmit} />
-      <JobList results={results} /> */}
-      <div>{data}</div>
+      <JobSearch onSubmit={handleSubmit} />
+      <JobList results={results} />
     </div>
   );
 }
