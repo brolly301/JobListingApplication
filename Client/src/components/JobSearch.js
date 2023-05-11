@@ -1,19 +1,15 @@
 import JobInput from "./JobInput";
 import { useState } from "react";
 import { GoLocation } from "react-icons/go";
-import Location from "../GeocodingAPI";
 import "../CSS/JobSearch.css";
 
-export default function JobSearch({ onSubmit }) {
+export default function JobSearch({ onSubmit, onLocationSubmit, location }) {
   const [formData, setFormData] = useState({
     title: "",
     jobLocation: "",
   });
-
   const [longitude, setLongitude] = useState("");
   const [latitude, setLatitude] = useState("");
-
-  Location(longitude, latitude);
 
   //Read up on why the setForm function works for multiple states
   const handleChange = (e) => {
@@ -32,6 +28,7 @@ export default function JobSearch({ onSubmit }) {
       setLatitude(position.coords.latitude);
       setLongitude(position.coords.longitude);
     });
+    onLocationSubmit(longitude, latitude);
   };
 
   return (
@@ -47,16 +44,15 @@ export default function JobSearch({ onSubmit }) {
         />
 
         <JobInput
-          value={formData.jobLocation}
+          value={formData.jobLocation || location}
           id="jobLocation"
           onChange={handleChange}
-          placeholder="  Location"
+          placeholder="Location"
         />
         <button
           type="button"
           onClick={handleLocation}
-          className="job-location-button"
-        >
+          className="job-location-button">
           <GoLocation style={{ fontSize: "19px" }} />{" "}
         </button>
         <button type="submit" className="job-search-button">

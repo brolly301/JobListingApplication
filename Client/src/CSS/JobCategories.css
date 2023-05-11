@@ -1,0 +1,31 @@
+.job-category-title {
+  text-align: center;
+  font-size: 30px;
+}
+
+.job-category-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  top: -30px;
+}
+
+.job-category-image {
+  width: 370px;
+  height: 370px;
+  border: 1px solid black;
+  object-fit: cover;
+}
+
+.job-category-name {
+  text-align: center;
+  position: relative;
+  top: 15px;
+  font-size: 20px;
+}
+
+.job-category {
+  padding-left: 30px;
+}

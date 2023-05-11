@@ -7,8 +7,10 @@ const Location = async (longitude, latitude) => {
       lon: longitude,
     },
   });
-  console.log(response);
-  return response.data.address;
+  return response.data;
 };
 
 export default Location;
+
+// This works but not fully, need to find out how to get the location notification
+// to come back up and show the location on first click instead of second
