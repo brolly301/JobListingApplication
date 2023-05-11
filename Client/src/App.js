@@ -4,6 +4,7 @@ import JobResults from "./AdzunaAPI";
 import { getTest } from "./functions/test";
 import { useEffect, useState } from "react";
 import "./index.css";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [results, setResults] = useState([]);
@@ -24,9 +25,11 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="app">
+      <Navbar />
       <JobSearch onSubmit={handleSubmit} />
       <JobList results={results} />
+      {data}
     </div>
   );
 }

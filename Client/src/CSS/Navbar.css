@@ -1,0 +1,31 @@
+nav {
+  padding-left: 20px;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  height: 80px;
+  justify-content: end;
+
+  align-items: center;
+}
+
+li {
+  display: inline;
+}
+
+li a {
+  display: inherit;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}

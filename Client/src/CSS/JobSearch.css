@@ -8,25 +8,35 @@
   color: rgb(0, 0, 0);
 }
 
-.job-input {
-  position: relative;
-  width: 400px;
-  height: 40px;
-  margin: 7px;
-  border: 1px solid black;
+.job-input-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .job-search-button {
   border: 1px solid black;
-  width: 405px;
-  height: 40px;
+  width: 250px;
   font-size: 18px;
   color: white;
   font-weight: bolder;
   background-color: rgb(129, 173, 212);
+  height: 44px;
   margin-top: 7px;
+}
+
+.job-location-button {
+  height: 44px;
+  margin-top: 7px;
+  width: 40px;
+  margin-left: 2px;
+  margin-right: 10px;
 }
 
 .job-search-button:hover {
   background-color: rgb(114, 154, 189);
+}
+
+.job-hr {
+  margin-top: 40px;
 }
