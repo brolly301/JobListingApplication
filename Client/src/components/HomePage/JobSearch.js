@@ -1,7 +1,7 @@
 import JobInput from "./JobInput";
 import { useState } from "react";
 import { GoLocation } from "react-icons/go";
-import "../CSS/JobSearch.css";
+import "../../CSS/JobSearch.css";
 
 export default function JobSearch({ onSubmit, onLocationSubmit, location }) {
   const [formData, setFormData] = useState({
@@ -18,11 +18,13 @@ export default function JobSearch({ onSubmit, onLocationSubmit, location }) {
     });
   };
 
+  //Using form data to generate job listings using API
   const handleFormSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData.title, formData.jobLocation);
   };
 
+  //Get current location in co-ordinates and convert to location
   const handleLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       setLatitude(position.coords.latitude);
@@ -33,8 +35,6 @@ export default function JobSearch({ onSubmit, onLocationSubmit, location }) {
 
   return (
     <div className="job-search">
-      <h1 className="job-search-title">Discover. Apply. Succeed.</h1>
-      <h1 className="job-search-title"> Kickstart your career with us today</h1>
       <form className="job-input-form " onSubmit={handleFormSubmit}>
         <JobInput
           value={formData.title}
@@ -42,9 +42,8 @@ export default function JobSearch({ onSubmit, onLocationSubmit, location }) {
           onChange={handleChange}
           placeholder="  Job Title"
         />
-
         <JobInput
-          value={formData.jobLocation || location}
+          defaultValue={formData.jobLocation || location}
           id="jobLocation"
           onChange={handleChange}
           placeholder="Location"
@@ -52,18 +51,14 @@ export default function JobSearch({ onSubmit, onLocationSubmit, location }) {
         <button
           type="button"
           onClick={handleLocation}
-          className="job-location-button">
-          <GoLocation style={{ fontSize: "19px" }} />{" "}
+          className="job-location-button"
+        >
+          <GoLocation style={{ fontSize: "19px" }} />
         </button>
         <button type="submit" className="job-search-button">
           Search
         </button>
       </form>
-      <h4>
-        Unlock your potential and find your perfect match with us - your
-        ultimate employment destination. Apply now!
-      </h4>
-      <hr className="job-hr" />
     </div>
   );
 }

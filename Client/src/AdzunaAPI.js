@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//GET request to generate job listings from a search result
 const JobResults = async (term, jobLocation) => {
   const response = await axios.get(
     "http://api.adzuna.com/v1/api/jobs/gb/search/1?content-type=application/json",

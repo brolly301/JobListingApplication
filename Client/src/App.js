@@ -1,18 +1,14 @@
-import JobSearch from "./components/JobSearch";
-import JobList from "./components/JobList";
-import JobResults from "./AdzunaAPI";
-import JobCategories from "./components/JobCategories";
 import { getTest } from "./functions/test";
 import { useEffect, useState } from "react";
+import HomePage from "./components/HomePage/HomePage";
+import ResultsPage from "./components/ResultsPage/ResultsPage";
 import "./index.css";
-import Navbar from "./components/Navbar";
-import Location from "./GeocodingAPI";
 
 function App() {
-  const [results, setResults] = useState([]);
   const [data, setData] = useState("Hello World");
   const [location, setLocation] = useState("");
 
+  //Calls the test data a single time when the application is loaded and sets its state
   useEffect(() => {
     getTest()
       .then((res) => {
@@ -21,27 +17,10 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleSubmit = async (term, jobLocation) => {
-    const result = await JobResults(term, jobLocation);
-    setResults(result);
-    console.log(results);
-  };
-
-  const handleLocationSubmit = async (longitude, latitude) => {
-    const result = await Location(longitude, latitude);
-    setLocation(result.address.city);
-  };
-
   return (
     <div className="app">
-      <Navbar />
-      <JobSearch
-        onSubmit={handleSubmit}
-        onLocationSubmit={handleLocationSubmit}
-        location={location}
-      />
-      {/* <JobList results={results} /> */}
-      <JobCategories />
+      {/* <HomePage location={location} setLocation={setLocation} /> */}
+      <ResultsPage />
     </div>
   );
 }

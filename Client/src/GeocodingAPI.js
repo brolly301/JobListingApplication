@@ -1,16 +1,15 @@
 import axios from "axios";
 
+//GET request to generate a location name from latitude and longitude co-ordinates
 const Location = async (longitude, latitude) => {
   const response = await axios.get("https://geocode.maps.co/reverse?", {
     params: {
-      lat: latitude,
-      lon: longitude,
+      lat: latitude || 0,
+      lon: longitude || 0,
     },
   });
+  console.log(response.data);
   return response.data;
 };
 
 export default Location;
-
-// This works but not fully, need to find out how to get the location notification
-// to come back up and show the location on first click instead of second

@@ -1,4 +1,4 @@
-import "../CSS/JobShow.css";
+import "../../CSS/JobShow.css";
 import { MdLocationOn } from "react-icons/md";
 import { BiMoney } from "react-icons/bi";
 
