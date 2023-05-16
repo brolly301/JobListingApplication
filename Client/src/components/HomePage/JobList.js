@@ -2,7 +2,7 @@ import JobShow from "./JobShow";
 import "../../CSS/JobList.css";
 
 export default function JobList({ results }) {
-  const renderedList = results.map((result) => {
+  const renderedList = results?.map((result) => {
     return <JobShow key={result.adref} result={result} />;
   });
 

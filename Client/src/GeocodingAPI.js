@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //GET request to generate a location name from latitude and longitude co-ordinates
-const Location = async (longitude, latitude) => {
+const getLocation = async (longitude, latitude) => {
   const response = await axios.get("https://geocode.maps.co/reverse?", {
     params: {
       lat: latitude || 0,
@@ -12,4 +12,4 @@ const Location = async (longitude, latitude) => {
   return response.data;
 };
 
-export default Location;
+export default getLocation;
