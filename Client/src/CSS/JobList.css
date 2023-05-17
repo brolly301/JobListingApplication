@@ -1,7 +1,8 @@
 .job-list {
-  background-color: rgb(121, 121, 121);
   color: white;
-  margin: 0 auto;
-  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
 }

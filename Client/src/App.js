@@ -25,6 +25,7 @@ function App() {
   const handleSubmit = async (term, jobLocation) => {
     const result = await JobResults(term, jobLocation);
     setResults(result);
+    console.log(result);
   };
 
   //Function for setting location input as results of API call

@@ -7,5 +7,31 @@
 .filter-button {
   width: 120px;
   height: 30px;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.sort-button {
+  width: 80px;
+  height: 25px;
+  position: relative;
+  left: 900px;
+  margin-top: -90px;
+}
+
+hr {
+  margin-top: 30px;
+  padding-bottom: 10px;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.page-nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

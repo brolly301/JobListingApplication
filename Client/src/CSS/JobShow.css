@@ -1,7 +1,57 @@
 .job-show {
   border: 1px solid black;
-  width: 690px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
+  width: 750px;
+  padding: 10px 5px;
+  background-color: rgb(0, 0, 0);
+  margin-bottom: 10px;
+  height: 150px;
+}
+
+.icon {
+  position: relative;
+  top: 4px;
+  font-size: 20px;
+}
+
+.job-detail-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 75px;
+  height: 50px;
+  width: 400px;
+  background-color: black;
+}
+
+.job-detail {
+  margin: 0px 20px;
+  position: relative;
+  top: -20px;
+}
+
+.job-title {
+  position: relative;
+  left: 100px;
+  text-decoration: underline;
+}
+
+.vl {
+  border-left: 2px solid rgb(0, 0, 0);
+  height: 170px;
+  position: relative;
+  bottom: 170px;
+  left: 570px;
+}
+
+.job-image-container {
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.job-show-image {
+  position: relative;
+  top: -340px;
+  left: 573px;
+  width: 180px;
+  height: 170px;
+  object-fit: cover;
 }
