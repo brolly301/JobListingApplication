@@ -1,10 +1,10 @@
 import { getTest } from "./functions/test";
 import { useEffect, useState } from "react";
-import HomePage from "./components/HomePage/HomePage";
+import HomePage from "./routes/HomePage";
 import ResultsPage from "./components/ResultsPage/ResultsPage";
 import "./index.css";
-import JobResults from "./AdzunaAPI";
-import getLocation from "./GeocodingAPI";
+import JobResults from "./functions/AdzunaAPI";
+import getLocation from "./functions/GeocodingAPI";
 import JobList from "./components/HomePage/JobList";
 import RegisterPage from "./components/Authentication/Registeration/RegisterPage";
 
@@ -37,18 +37,18 @@ function App() {
 
   return (
     <div className="app">
-      {/* <HomePage
+      <HomePage
         onSubmit={handleSubmit}
         onLocationSubmit={handleLocationSubmit}
         location={location}
-      /> */}
+      />
       {/* <ResultsPage
         onSubmit={handleSubmit}
         onLocationSubmit={handleLocationSubmit}
         location={location}
         results={results}
       /> */}
-      <RegisterPage />
+      {/* <RegisterPage /> */}
     </div>
   );
 }

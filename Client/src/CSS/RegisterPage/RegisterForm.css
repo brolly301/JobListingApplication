@@ -1,40 +1,53 @@
-h2,
-h5 {
+.title {
   text-align: center;
   margin: 10px;
+  font-size: 40px;
+}
+
+.subTitle {
+  text-align: center;
+  margin: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
   font-weight: 100;
 }
 
 .input-box-column {
-  margin-bottom: 17px;
-  height: 20px;
+  margin-bottom: 22px;
+  height: 30px;
 }
 
 .input-box-row {
-  margin-bottom: 17px;
+  margin-bottom: 22px;
   width: 250px;
-  height: 20px;
+  height: 30px;
   margin-top: 10px;
 }
 
 .register-main-container {
   margin: 0 auto;
   margin-top: 20px;
-  width: 800px;
-  height: 400px;
+  width: 1200px;
+  height: 600px;
   border: 1px solid black;
 }
 
 .register-form-container {
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
+  border: 1px solid black;
+}
+
+.image-container {
+  width: 600px;
+  height: 600px;
   border: 1px solid black;
 }
 
 .input-container {
   margin: 0 auto;
-  width: 350px;
-  height: 300px;
+  width: 390px;
+  height: 500px;
 }
 
 .input-column {
@@ -48,7 +61,13 @@ h5 {
 }
 
 .register-button {
-  margin: auto;
-  text-align: center;
   background-color: rgb(175, 216, 243);
+  width: 390px;
+  height: 35px;
+  margin-bottom: 20px;
+}
+.login-button {
+  background-color: rgb(181, 243, 175);
+  width: 390px;
+  height: 35px;
 }

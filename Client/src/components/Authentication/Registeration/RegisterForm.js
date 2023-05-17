@@ -4,8 +4,12 @@ export default function RegisterForm() {
   return (
     <div className="register-main-container">
       <div className="register-form-container">
-        <h2>Create your new account</h2>
-        <h5>Please enter your details below and get applying!</h5>
+        <br />
+        <br />
+        <h2 className="title">Create your new account</h2>
+        <h5 className="subTitle">
+          Please enter your details below and get applying!
+        </h5>
         <div className="input-container">
           <div className="input-row">
             <input
@@ -27,17 +31,20 @@ export default function RegisterForm() {
             />
             <input
               className="input-box-column"
-              type="text"
+              type="password"
               placeholder="Password"
             />
             <input
               className="input-box-column"
-              type="text"
+              type="password"
               placeholder="Confirm Password"
             />
           </div>
           <div style={{ textAlign: "center" }}>
             <button className="register-button">Register</button>
+            <button className="login-button">
+              Already have an account? Log in.
+            </button>
           </div>
         </div>
       </div>
