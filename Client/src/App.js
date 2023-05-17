@@ -6,6 +6,7 @@ import "./index.css";
 import JobResults from "./AdzunaAPI";
 import getLocation from "./GeocodingAPI";
 import JobList from "./components/HomePage/JobList";
+import RegisterPage from "./components/Authentication/Registeration/RegisterPage";
 
 function App() {
   const [data, setData] = useState("Hello World");
@@ -41,12 +42,13 @@ function App() {
         onLocationSubmit={handleLocationSubmit}
         location={location}
       /> */}
-      <ResultsPage
+      {/* <ResultsPage
         onSubmit={handleSubmit}
         onLocationSubmit={handleLocationSubmit}
         location={location}
         results={results}
-      />
+      /> */}
+      <RegisterPage />
     </div>
   );
 }
