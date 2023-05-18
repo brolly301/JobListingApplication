@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import "../../../CSS/LoginPage/LoginPage.css";
 
 export default function LoginForm() {
@@ -7,16 +8,18 @@ export default function LoginForm() {
     password: "",
   });
 
+  const [passwordShow, setPasswordShow] = useState(false);
+
+  const handlePasswordShow = () => setPasswordShow(!passwordShow);
+
   const handleChange = (e) => {
     setFormData((prevData) => {
       return { ...prevData, [e.target.id]: e.target.value };
     });
-    console.log(formData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
   };
 
   return (
@@ -38,9 +41,15 @@ export default function LoginForm() {
             onChange={handleChange}
             id="password"
             className="input-box"
-            type="text"
+            type={passwordShow ? "text" : "password"}
             placeholder="Password"
           />
+          {passwordShow ? (
+            <IoMdEye onClick={handlePasswordShow} />
+          ) : (
+            <IoMdEyeOff onClick={handlePasswordShow} />
+          )}
+
           <button className="input-box">Login</button>
         </div>
       </form>
