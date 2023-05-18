@@ -15,3 +15,9 @@ h1 {
 h4 {
   margin-bottom: 20px;
 }
+
+.passwordShow {
+  position: relative;
+  right: 20px;
+  top: -35px;
+}

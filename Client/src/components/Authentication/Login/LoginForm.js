@@ -44,11 +44,13 @@ export default function LoginForm() {
             type={passwordShow ? "text" : "password"}
             placeholder="Password"
           />
-          {passwordShow ? (
-            <IoMdEye onClick={handlePasswordShow} />
-          ) : (
-            <IoMdEyeOff onClick={handlePasswordShow} />
-          )}
+          <div className="passwordShow">
+            {passwordShow ? (
+              <IoMdEye onClick={handlePasswordShow} />
+            ) : (
+              <IoMdEyeOff onClick={handlePasswordShow} />
+            )}
+          </div>
 
           <button className="input-box">Login</button>
         </div>
