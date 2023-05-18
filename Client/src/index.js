@@ -5,6 +5,7 @@ import HomePage from "./routes/HomePage";
 import RegisterPage from "./components/Authentication/Registeration/RegisterPage";
 import ResultsPage from "./components/ResultsPage/ResultsPage";
 import "./CSS/Navbar.css";
+import { Provider } from "./context/jobs";
 
 import {
   createBrowserRouter,
@@ -53,7 +54,7 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <Provider>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </Provider>
 );

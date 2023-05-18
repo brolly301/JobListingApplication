@@ -3,27 +3,18 @@ import JobList from "../HomePage/JobList";
 import ResultFilters from "./ResultFilters";
 import SortBy from "./SortBy";
 
-export default function ResultsPage({
-  onSubmit,
-  onLocationSubmit,
-  location,
-  results,
-}) {
+export default function ResultsPage() {
   return (
     <div>
       <br />
-      <JobSearch
-        onSubmit={onSubmit}
-        onLocationSubmit={onLocationSubmit}
-        location={location}
-      />
+      <JobSearch />
       <hr />
       <ResultFilters />
       <h4>
         {/* Search results - {results.length} Jobs for Software Developer in Belfast */}
       </h4>
       {/* <SortBy>Sort By</SortBy> */}
-      <JobList results={results} />
+      <JobList />
       <div className="page-nav-container">
         <button>Previous</button>
         <button>Next</button>

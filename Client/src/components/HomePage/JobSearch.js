@@ -2,8 +2,11 @@ import JobInput from "./JobInput";
 import { useState } from "react";
 import { GoLocation } from "react-icons/go";
 import "../../CSS/JobSearch.css";
+import useJobsContext from "../../hooks/useJobsContext";
 
-export default function JobSearch({ onSubmit, onLocationSubmit, location }) {
+export default function JobSearch() {
+  const { handleSubmit, handleLocationSubmit, location } = useJobsContext();
+
   const [formData, setFormData] = useState({
     title: "",
     jobLocation: "",
@@ -21,7 +24,7 @@ export default function JobSearch({ onSubmit, onLocationSubmit, location }) {
   //Using form data to generate job listings using API
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData.title, formData.jobLocation);
+    handleSubmit(formData.title, formData.jobLocation);
   };
 
   //Get current location in co-ordinates and convert to location
@@ -30,7 +33,7 @@ export default function JobSearch({ onSubmit, onLocationSubmit, location }) {
       setLatitude(position.coords.latitude);
       setLongitude(position.coords.longitude);
     });
-    onLocationSubmit(longitude, latitude);
+    handleLocationSubmit(longitude, latitude);
   };
 
   return (
