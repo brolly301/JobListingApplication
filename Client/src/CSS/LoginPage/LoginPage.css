@@ -1,0 +1,17 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box {
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin-bottom: 0px;
+}
+
+h4 {
+  margin-bottom: 20px;
+}

@@ -15,6 +15,7 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
+import LoginPage from "./components/Authentication/Login/LoginPage";
 
 const Root = () => {
   return (
@@ -47,8 +48,9 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route path="/" index element={<HomePage />} />
-      <Route path="/register" element={<RegisterPage />} />
       <Route path="/search" element={<ResultsPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/login" element={<LoginPage />} />
     </Route>
   )
 );

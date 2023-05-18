@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import "../../../CSS/RegisterPage/RegisterForm.css";
 
 export default function RegisterForm() {
@@ -15,7 +14,10 @@ export default function RegisterForm() {
     setFormData((prevData) => {
       return { ...prevData, [e.target.id]: e.target.value };
     });
-    console.log(formData);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -27,7 +29,7 @@ export default function RegisterForm() {
         <h5 className="subTitle">
           Please enter your details below and get applying!
         </h5>
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className="input-container">
             <div className="input-row">
               <input
@@ -75,8 +77,10 @@ export default function RegisterForm() {
               />
             </div>
             <div style={{ textAlign: "center" }}>
-              <button className="register-button">Register</button>
-              <button className="login-button">
+              <button type="submit" className="register-button">
+                Register
+              </button>
+              <button type="button" className="login-button">
                 Already have an account? Log in.
               </button>
             </div>
