@@ -1,13 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import "../../../CSS/LoginPage/LoginPage.css";
+import { login } from "../../../APIs/authentication";
 
 export default function LoginForm() {
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
+  const redirect = useNavigate();
   const [passwordShow, setPasswordShow] = useState(false);
 
   const handlePasswordShow = () => setPasswordShow(!passwordShow);
@@ -18,23 +21,34 @@ export default function LoginForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    try {
+      const res = await login(formData);
+      if (res.error) {
+        alert(res.error);
+      } else {
+        alert(res.message);
+        redirect("/");
+      }
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Login</h1>
       <h4>Please enter your login details below.</h4>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <div className="input-container">
           <input
-            value={formData.email}
+            value={formData.username}
             onChange={handleChange}
-            id="email"
+            id="username"
             className="input-box"
             type="text"
-            placeholder="Email Address"
+            placeholder="Username"
           />
           <input
             value={formData.password}

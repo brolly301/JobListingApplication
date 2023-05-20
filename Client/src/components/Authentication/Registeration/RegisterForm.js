@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "../../../CSS/RegisterPage/RegisterForm.css";
+import { register } from "../../../APIs/authentication";
 
 export default function RegisterForm() {
   const [formData, setFormData] = useState({
+    username: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -16,8 +18,14 @@ export default function RegisterForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+    try {
+      await register(formData);
+      alert("Successful Registration");
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (
@@ -29,7 +37,7 @@ export default function RegisterForm() {
         <h5 className="subTitle">
           Please enter your details below and get applying!
         </h5>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleRegister}>
           <div className="input-container">
             <div className="input-row">
               <input
@@ -50,6 +58,14 @@ export default function RegisterForm() {
               />
             </div>
             <div className="input-column">
+              <input
+                value={formData.username}
+                onChange={handleChange}
+                id="username"
+                className="input-box-column"
+                type="text"
+                placeholder="Username"
+              />
               <input
                 value={formData.email}
                 onChange={handleChange}
@@ -80,9 +96,11 @@ export default function RegisterForm() {
               <button type="submit" className="register-button">
                 Register
               </button>
-              <button type="button" className="login-button">
-                Already have an account? Log in.
-              </button>
+              <a href="/login">
+                <button type="button" className="login-button">
+                  Already have an account? Log in.
+                </button>
+              </a>
             </div>
           </div>
         </form>
