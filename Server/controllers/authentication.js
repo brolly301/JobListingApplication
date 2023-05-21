@@ -29,6 +29,14 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.getLoggedInUser = (req, res) => {
+  const { username } = req.user;
+  return res.status(200).json({
+    message: "User is still logged in",
+    username,
+  });
+};
+
 exports.logout = async (req, res) => {
   req.logout(function (err) {
     if (err) {
