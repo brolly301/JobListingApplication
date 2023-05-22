@@ -29,3 +29,15 @@ li a {
 li a:hover {
   background-color: #111;
 }
+
+span {
+  display: inherit;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+span:hover {
+  background-color: #111;
+}

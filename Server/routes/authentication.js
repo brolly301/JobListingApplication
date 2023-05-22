@@ -9,6 +9,8 @@ const {
   logout,
   getLoggedInUser,
 } = require("../controllers/authentication");
+const { isLoggedIn } = require("../middleware/isLoggedIn");
+const { getUserByID } = require("../middleware/user");
 
 //API routes
 router.post("/register", register);
@@ -21,8 +23,8 @@ router.post(
   login
 );
 
-router.get("/user", getLoggedInUser);
-
 router.get("/logout", logout);
+
+router.get("/user", isLoggedIn, getLoggedInUser);
 
 module.exports = router;

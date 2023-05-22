@@ -31,20 +31,21 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.logout = async (req, res) => {
+  req.logout(function (err) {
+    if (err) {
+    } else {
+      return res.json({
+        message: "Logout Successful",
+      });
+    }
+  });
+};
+
 exports.getLoggedInUser = (req, res) => {
   const { username } = req.user;
   return res.status(200).json({
     message: "User is still logged in",
     username,
-  });
-};
-
-exports.logout = async (req, res) => {
-  req.logout(function (err) {
-    if (err) {
-      return err;
-    } else {
-      res.send("Logged Out");
-    }
   });
 };

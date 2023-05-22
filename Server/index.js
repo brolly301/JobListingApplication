@@ -4,8 +4,6 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
-const cookieParser = require("cookie-parser");
-const expressValidator = require("express-validator");
 const passport = require("passport");
 const LocalAuth = require("passport-local");
 const session = require("express-session");

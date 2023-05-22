@@ -1,16 +1,38 @@
 // import { getTest } from "./functions/test";
 // import { useEffect, useState } from "react";
 import HomePage from "./routes/HomePage";
-import RegisterPage from "./components/Authentication/Registeration/RegisterPage";
-import ResultsPage from "./components/ResultsPage/ResultsPage";
-import LoginPage from "./components/Authentication/Login/LoginPage";
+import RegisterPage from "./routes/RegisterPage";
+import ResultsPage from "./routes/ResultsPage";
+import LoginPage from "./routes/LoginPage";
 import "./index.css";
-import { Link, Outlet, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { Link, Outlet, Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { UserContext } from "./context/user";
+import { getUser, logout } from "./APIs/authentication";
 
 export default function App() {
+  const redirect = useNavigate();
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = getUser()
+      .then((res) => {
+        if (res.error) return console.log(res.error);
+        else setUser(res.username);
+      })
+      .catch((err) => console.log(err));
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout().then((message) => {
+      console.log(message);
+      setUser(null);
+      redirect("/");
+    });
+  };
+
   return (
     <>
       <ul>
@@ -35,7 +57,7 @@ export default function App() {
           </>
         ) : (
           <li>
-            <Link to="/logout">Logout</Link>
+            <span onClick={handleLogout}>Logout</span>
           </li>
         )}
       </ul>

@@ -1,7 +1,7 @@
-import JobSearch from "../HomePage/JobSearch";
-import JobList from "../HomePage/JobList";
-import ResultFilters from "./ResultFilters";
-import SortBy from "./SortBy";
+import JobSearch from "../components/HomePage/JobSearch";
+import JobList from "../components/HomePage/JobList";
+import ResultFilters from "../components/ResultsPage/ResultFilters";
+import SortBy from "../components/ResultsPage/SortBy";
 
 export default function ResultsPage() {
   return (
