@@ -14,6 +14,7 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
+  const { username } = req.user;
   if (!User) {
     return res.status(401).json({
       error: "Invalid Login",
@@ -23,6 +24,7 @@ exports.login = async (req, res) => {
   try {
     res.json({
       message: "Successful Login",
+      username,
     });
   } catch (err) {
     res.send(err);

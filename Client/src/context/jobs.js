@@ -4,7 +4,7 @@ import getLocation from "../functions/GeocodingAPI";
 
 const JobsContext = createContext();
 
-export function Provider({ children }) {
+export function JobProvider({ children }) {
   const [location, setLocation] = useState("");
   const [results, setResults] = useState([]);
 

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import "../../../CSS/LoginPage/LoginPage.css";
 import { login } from "../../../APIs/authentication";
+import useUserContext from "../../../hooks/useUserContext";
 
 export default function LoginForm() {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ export default function LoginForm() {
 
   const redirect = useNavigate();
   const [passwordShow, setPasswordShow] = useState(false);
+  const { user, setUser } = useUserContext();
 
   const handlePasswordShow = () => setPasswordShow(!passwordShow);
 
@@ -29,6 +31,7 @@ export default function LoginForm() {
         alert(res.error);
       } else {
         alert(res.message);
+        setUser(res.username);
         redirect("/");
       }
     } catch (err) {

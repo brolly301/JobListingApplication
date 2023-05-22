@@ -9,7 +9,6 @@ const {
   logout,
   getLoggedInUser,
 } = require("../controllers/authentication");
-const { userById } = require("../middleware/user");
 
 //API routes
 router.post("/register", register);
