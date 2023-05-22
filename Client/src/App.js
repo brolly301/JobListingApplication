@@ -5,13 +5,20 @@ import RegisterPage from "./routes/RegisterPage";
 import ResultsPage from "./routes/ResultsPage";
 import LoginPage from "./routes/LoginPage";
 import "./index.css";
-import { Link, Outlet, Routes, Route, useNavigate } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { UserContext } from "./context/user";
 import { getUser, logout } from "./APIs/authentication";
 
 export default function App() {
-  const redirect = useNavigate();
+  const route = useNavigate();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -21,7 +28,7 @@ export default function App() {
         else setUser(res.username);
       })
       .catch((err) => console.log(err));
-    return () => unsubscribe();
+    // return () => unsubscribe();
   }, []);
 
   const handleLogout = (e) => {
@@ -29,7 +36,7 @@ export default function App() {
     logout().then((message) => {
       console.log(message);
       setUser(null);
-      redirect("/");
+      route("/");
     });
   };
 
@@ -56,9 +63,14 @@ export default function App() {
             </li>
           </>
         ) : (
-          <li>
-            <span onClick={handleLogout}>Logout</span>
-          </li>
+          <>
+            <li>
+              <Link onClick={handleLogout}>Profile</Link>
+            </li>
+            <li>
+              <span onClick={handleLogout}>Logout</span>
+            </li>
+          </>
         )}
       </ul>
       <div>
@@ -68,8 +80,15 @@ export default function App() {
         <Routes>
           <Route path="/" index element={<HomePage />} />
           <Route path="/search" element={<ResultsPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/profile" element={<ResultsPage />} />
+          <Route
+            path="/register"
+            element={user ? <Navigate replace to="/" /> : <RegisterPage />}
+          />
+          <Route
+            path="/login"
+            element={user ? <Navigate replace to="/" /> : <LoginPage />}
+          />
         </Routes>
       </UserContext.Provider>
     </>

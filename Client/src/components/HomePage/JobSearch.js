@@ -1,5 +1,6 @@
 import JobInput from "./JobInput";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { GoLocation } from "react-icons/go";
 import "../../CSS/JobSearch.css";
 import useJobsContext from "../../hooks/useJobsContext";
@@ -13,6 +14,7 @@ export default function JobSearch() {
   });
   const [longitude, setLongitude] = useState("");
   const [latitude, setLatitude] = useState("");
+  const redirect = useNavigate();
 
   //Read up on why the setForm function works for multiple states
   const handleChange = (e) => {
@@ -25,6 +27,7 @@ export default function JobSearch() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     handleSubmit(formData.title, formData.jobLocation);
+    redirect("/search");
   };
 
   //Get current location in co-ordinates and convert to location
@@ -54,8 +57,7 @@ export default function JobSearch() {
         <button
           type="button"
           onClick={handleLocation}
-          className="job-location-button"
-        >
+          className="job-location-button">
           <GoLocation style={{ fontSize: "19px" }} />
         </button>
         <button type="submit" className="job-search-button">
