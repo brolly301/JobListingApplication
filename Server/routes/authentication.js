@@ -10,7 +10,6 @@ const {
   getLoggedInUser,
 } = require("../controllers/authentication");
 const { isLoggedIn } = require("../middleware/isLoggedIn");
-const { getUserByID } = require("../middleware/user");
 
 //API routes
 router.post("/register", register);

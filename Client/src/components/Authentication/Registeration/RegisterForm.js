@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "../../../CSS/RegisterPage/RegisterForm.css";
 import { register } from "../../../APIs/authentication";
+import { useNavigate } from "react-router-dom";
+import useUserContext from "../../../hooks/useUserContext";
 
 export default function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -8,10 +10,14 @@ export default function RegisterForm() {
     firstName: "",
     lastName: "",
     email: "",
+    phoneNumber: "",
+    location: "",
     password: "",
     confirmPassword: "",
   });
 
+  const redirect = useNavigate();
+  const { setUser } = useUserContext();
   const handleChange = (e) => {
     setFormData((prevData) => {
       return { ...prevData, [e.target.id]: e.target.value };
@@ -23,6 +29,8 @@ export default function RegisterForm() {
     try {
       await register(formData);
       alert("Successful Registration");
+      setUser(formData.username);
+      redirect("/");
     } catch (err) {
       alert(err);
     }
@@ -74,7 +82,22 @@ export default function RegisterForm() {
                 type="text"
                 placeholder="Email Address"
               />
-
+              <input
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                id="phoneNumber"
+                className="input-box-column"
+                type="text"
+                placeholder="Phone Number"
+              />
+              <input
+                value={formData.location}
+                onChange={handleChange}
+                id="location"
+                className="input-box-column"
+                type="text"
+                placeholder="Location"
+              />
               <input
                 value={formData.password}
                 onChange={handleChange}

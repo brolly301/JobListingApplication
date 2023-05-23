@@ -1,4 +1,4 @@
-import "../../CSS/JobCategories.css";
+import "../../CSS/HomePage/JobCategories.css";
 import JobCategory from "./JobCategory";
 
 export default function JobCategories() {

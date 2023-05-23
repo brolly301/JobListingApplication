@@ -2,7 +2,7 @@ import JobInput from "./JobInput";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoLocation } from "react-icons/go";
-import "../../CSS/JobSearch.css";
+import "../../CSS/HomePage/JobSearch.css";
 import useJobsContext from "../../hooks/useJobsContext";
 
 export default function JobSearch() {

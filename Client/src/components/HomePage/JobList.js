@@ -1,5 +1,5 @@
 import JobShow from "./JobShow";
-import "../../CSS/JobList.css";
+import "../../CSS/HomePage/JobList.css";
 import useJobsContext from "../../hooks/useJobsContext";
 
 export default function JobList() {

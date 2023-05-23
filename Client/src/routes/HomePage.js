@@ -1,6 +1,6 @@
 import JobSearch from "../components/HomePage/JobSearch";
 import JobCategories from "../components/HomePage/JobCategories";
-import "../CSS/JobSearch.css";
+import "../CSS/HomePage/JobSearch.css";
 
 export default function HomePage() {
   return (

@@ -1,4 +1,4 @@
-import "../../CSS/JobInput.css";
+import "../../CSS/HomePage/JobInput.css";
 
 export default function JobInput({ ...rest }) {
   return (
