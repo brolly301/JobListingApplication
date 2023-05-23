@@ -1,39 +1,34 @@
-import { useContext } from "react";
-import "../../CSS/ProfilePage/UserPersonalDetails.css";
+import { useContext, useState } from "react";
 import UserDetailsContext from "../../context/userDetails";
+import EditUserDetails from "./EditUserDetails";
+import "../../CSS/ProfilePage/UserPersonalDetails.css";
 
 export default function UserDetails() {
   const { userData } = useContext(UserDetailsContext);
+  const [showEdit, setShowEdit] = useState(false);
 
-  return (
+  const handleEdit = (e) => {
+    setShowEdit(!showEdit);
+  };
+
+  let content = (
     <div>
-      <h1>Profile Page</h1>
+      <h1 style={{ textAlign: "center", margin: "10px" }}>Profile Page</h1>
       <div className="input-container">
-        <input
-          className="input-box"
-          type="text"
-          placeholder="Full name"
-          defaultValue={`${userData.firstName} ${userData.lastName}`}
-        />
-        <input
-          className="input-box"
-          type="text"
-          placeholder="Email"
-          defaultValue={userData.email}
-        />
-        <input
-          className="input-box"
-          type="text"
-          placeholder="Location"
-          defaultValue={userData.location}
-        />
-        <input
-          className="input-box"
-          type="text"
-          placeholder="Phone Number"
-          defaultValue={userData.phoneNumber}
-        />
+        <h3>
+          {userData.firstName} {userData.lastName}
+        </h3>
+        <h3>{userData.email}</h3>
+        <h3>{userData.location}</h3>
+        <h3>{userData.phoneNumber}</h3>
+        <button onClick={handleEdit}>Edit</button>
       </div>
     </div>
   );
+
+  if (showEdit) {
+    content = <EditUserDetails onEdit={handleEdit} />;
+  }
+
+  return <div>{content}</div>;
 }

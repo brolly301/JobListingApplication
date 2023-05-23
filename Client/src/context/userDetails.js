@@ -12,8 +12,6 @@ export function UserDetailsProvider({ children }) {
     location: "",
   });
 
-  const [email, setEmail] = useState("");
-
   useEffect(() => {
     const data = getUser().then((res) => {
       setUserData({
