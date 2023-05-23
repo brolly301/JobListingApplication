@@ -27,6 +27,7 @@ export function UserDetailsProvider({ children }) {
 
   const valueToShare = {
     userData,
+    setUserData,
   };
 
   return (
