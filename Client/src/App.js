@@ -29,7 +29,7 @@ export default function App() {
         else setUser(res._doc.username);
       })
       .catch((err) => console.log(err));
-    // return () => unsubscribe();
+    return () => unsubscribe();
   }, []);
 
   const handleLogout = (e) => {
