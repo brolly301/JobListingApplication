@@ -16,6 +16,7 @@ import {
 import { useEffect, useState } from "react";
 import { UserContext } from "./context/user";
 import { getUser, logout } from "./APIs/authentication";
+import ProfilePage from "./routes/ProfilePage";
 
 export default function App() {
   const route = useNavigate();
@@ -25,7 +26,7 @@ export default function App() {
     const unsubscribe = getUser()
       .then((res) => {
         if (res.error) return console.log(res.error);
-        else setUser(res.username);
+        else setUser(res._doc.username);
       })
       .catch((err) => console.log(err));
     // return () => unsubscribe();
@@ -65,7 +66,7 @@ export default function App() {
         ) : (
           <>
             <li>
-              <Link onClick={handleLogout}>Profile</Link>
+              <Link to="/profile">Profile</Link>
             </li>
             <li>
               <span onClick={handleLogout}>Logout</span>
@@ -80,7 +81,7 @@ export default function App() {
         <Routes>
           <Route path="/" index element={<HomePage />} />
           <Route path="/search" element={<ResultsPage />} />
-          <Route path="/profile" element={<ResultsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="/register"
             element={user ? <Navigate replace to="/" /> : <RegisterPage />}
