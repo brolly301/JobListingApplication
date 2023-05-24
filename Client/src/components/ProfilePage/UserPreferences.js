@@ -4,13 +4,7 @@ import UserDetailsContext from "../../context/userDetails";
 import EditUserPreferences from "./EditUserPreferences";
 
 export default function UserPreferences() {
-  const { userData } = useContext(UserDetailsContext);
-
-  const [showEdit, setShowEdit] = useState(false);
-
-  const handleEdit = (e) => {
-    setShowEdit(!showEdit);
-  };
+  const { userData, handleEdit, showEdit } = useContext(UserDetailsContext);
 
   let content = (
     <div className="container">
@@ -28,7 +22,7 @@ export default function UserPreferences() {
   );
 
   if (showEdit) {
-    content = <EditUserPreferences onEdit={handleEdit} />;
+    content = <EditUserPreferences />;
   }
 
   return <div>{content}</div>;
