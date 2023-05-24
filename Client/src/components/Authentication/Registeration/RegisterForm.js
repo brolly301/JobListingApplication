@@ -3,6 +3,7 @@ import "../../../CSS/RegisterPage/RegisterForm.css";
 import { register } from "../../../APIs/authentication";
 import { useNavigate } from "react-router-dom";
 import useUserContext from "../../../hooks/useUserContext";
+import { addPreferences } from "../../../APIs/profile";
 
 export default function RegisterForm() {
   const [formData, setFormData] = useState({

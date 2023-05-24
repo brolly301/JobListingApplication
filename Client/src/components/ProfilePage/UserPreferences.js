@@ -16,13 +16,24 @@ export default function UserPreferences() {
     <div className="container">
       <h1 style={{ textAlign: "center", margin: "10px" }}>User Preferences</h1>
       <div className="input-container">
-        <h3>
-          {userData.firstName} {userData.lastName}
-        </h3>
-        <h3>{userData.email}</h3>
-        <h3>{userData.location}</h3>
-        <h3>{userData.phoneNumber}</h3>
-        <button onClick={handleEdit}>Edit</button>
+        <label>Salary:</label>
+        <input className="input-box" readOnly placeholder="" />
+        <br />
+        <label>Location:</label>
+        <input className="input-box" readOnly placeholder="" />
+        <br />
+        <label>Job Title:</label>
+        <input className="input-box" readOnly placeholder="" />
+        <br />
+        <label>Job Type:</label>
+        <input className="input-box" readOnly placeholder="" />
+        <br />
+        <label>Remote:</label>
+        <input className="input-box" readOnly placeholder="" />
+        <br />
+        <button className="input-box" onClick={handleEdit}>
+          Edit
+        </button>
       </div>
     </div>
   );

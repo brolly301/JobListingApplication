@@ -14,8 +14,11 @@ export default function UserPreferences({ onEdit }) {
         <input className="input-box" type="text" placeholder="Job Title" />
         <input className="input-box" type="text" placeholder="Job Type" />
         <input className="input-box" type="text" placeholder="Remote" />
-        <button onClick={handleEdit} className="input-box">
-          Hey
+        <button className="input-box" type="submit">
+          Save
+        </button>
+        <button type="button" onClick={handleEdit} className="input-box">
+          Cancel
         </button>
       </div>
     </div>

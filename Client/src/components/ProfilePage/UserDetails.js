@@ -7,12 +7,12 @@ export default function UserDetails() {
   const { userData } = useContext(UserDetailsContext);
   const [showEdit, setShowEdit] = useState(false);
 
-  const handleEdit = (e) => {
+  const handleEdit = () => {
     setShowEdit(!showEdit);
   };
 
   let content = (
-    <div className="container">
+    <div className="container1">
       <h1 style={{ textAlign: "center", margin: "10px" }}>User Details</h1>
       <div className="input-container">
         <h3>

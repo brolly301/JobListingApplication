@@ -1,10 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
-const { editUser, editPreferences } = require("../controllers/profile");
+const {
+  editUser,
+  editPreferences,
+  addPreferences,
+} = require("../controllers/profile");
 
 router.patch("/editUser", editUser);
 
-router.post("/editPreferences", editPreferences);
+router.post("/addPreferences", addPreferences);
+
+router.patch("/editPreferences", editPreferences);
 
 module.exports = router;

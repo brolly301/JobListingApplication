@@ -15,11 +15,12 @@ exports.editPreferences = async (req, res) => {
       ...req.body,
     });
     res.send(updatedUser);
-  } else {
-    const insertedUser = await UserPreferences.insertMany({
-      username: req.user._id,
-      ...req.body,
-    });
-    res.send(insertedUser);
   }
+};
+
+exports.addPreferences = async (req, res) => {
+  const insertedUser = await UserPreferences.insertMany({
+    username: req.user._id,
+  });
+  res.send(insertedUser);
 };
