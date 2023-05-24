@@ -56,9 +56,11 @@ app.use(express.json());
 //route imports
 const testRoutes = require("./routes/test");
 const userRoutes = require("./routes/authentication.js");
+const profileRoutes = require("./routes/profile.js");
 
 //routes
 app.use("/", userRoutes);
+app.use("/profile", profileRoutes);
 
 //port and listener
 const port = 8080;

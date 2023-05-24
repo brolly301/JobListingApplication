@@ -1,10 +1,11 @@
-import { useContext, useState } from "react";
+import "../../CSS/ProfilePage/UserPreferences.css";
+import { useState, useContext } from "react";
 import UserDetailsContext from "../../context/userDetails";
-import EditUserDetails from "./EditUserDetails";
-import "../../CSS/ProfilePage/UserPersonalDetails.css";
+import EditUserPreferences from "./EditUserPreferences";
 
-export default function UserDetails() {
+export default function UserPreferences() {
   const { userData } = useContext(UserDetailsContext);
+
   const [showEdit, setShowEdit] = useState(false);
 
   const handleEdit = (e) => {
@@ -13,7 +14,7 @@ export default function UserDetails() {
 
   let content = (
     <div className="container">
-      <h1 style={{ textAlign: "center", margin: "10px" }}>User Details</h1>
+      <h1 style={{ textAlign: "center", margin: "10px" }}>User Preferences</h1>
       <div className="input-container">
         <h3>
           {userData.firstName} {userData.lastName}
@@ -27,7 +28,7 @@ export default function UserDetails() {
   );
 
   if (showEdit) {
-    content = <EditUserDetails onEdit={handleEdit} />;
+    content = <EditUserPreferences onEdit={handleEdit} />;
   }
 
   return <div>{content}</div>;

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import "../../CSS/ProfilePage/UserPersonalDetails.css";
 import UserDetailsContext from "../../context/userDetails";
-import { editUser } from "../../APIs/authentication";
+import { editUser } from "../../APIs/profile";
 
 export default function EditUserDetails({ onEdit }) {
   const { userData, setUserData } = useContext(UserDetailsContext);

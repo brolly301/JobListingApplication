@@ -48,8 +48,3 @@ exports.getLoggedInUser = (req, res) => {
     ...req.user,
   });
 };
-
-exports.editUser = async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.user._id, { ...req.body });
-  res.send(user);
-};

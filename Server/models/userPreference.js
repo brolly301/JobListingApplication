@@ -10,13 +10,13 @@ const UserPreferenceSchema = new Schema({
     type: Number,
   },
   location: {
-    type: Number,
+    type: String,
   },
   jobTitle: {
-    type: Number,
+    type: String,
   },
   jobType: {
-    type: Number,
+    type: String,
   },
   remote: {
     type: String,
