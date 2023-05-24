@@ -25,6 +25,13 @@ export function UserDetailsProvider({ children }) {
     return () => data;
   }, []);
 
+  const data = async () => {
+    const res = await getUser().then((res) => {
+      return res;
+    });
+    return res;
+  };
+
   const valueToShare = {
     userData,
     setUserData,
