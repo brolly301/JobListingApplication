@@ -16,6 +16,7 @@ export default function EditUserDetails({ onEdit }) {
     onEdit();
   };
 
+  //double check this, could be messing things up
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };

@@ -15,22 +15,16 @@ export function UserDetailsProvider({ children }) {
   useEffect(() => {
     const data = getUser().then((res) => {
       setUserData({
-        firstName: res._doc.firstName,
-        lastName: res._doc.lastName,
-        email: res._doc.email,
-        phoneNumber: res._doc.phoneNumber,
-        location: res._doc.location,
+        firstName: res.firstName,
+        lastName: res.lastName,
+        email: res.email,
+        phoneNumber: res.phoneNumber,
+        location: res.location,
       });
+      console.log(res);
     });
     return () => data;
-  }, []);
-
-  const data = async () => {
-    const res = await getUser().then((res) => {
-      return res;
-    });
-    return res;
-  };
+  }, [setUserData]);
 
   const valueToShare = {
     userData,

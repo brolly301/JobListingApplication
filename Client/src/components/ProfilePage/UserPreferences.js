@@ -17,19 +17,31 @@ export default function UserPreferences() {
       <h1 style={{ textAlign: "center", margin: "10px" }}>User Preferences</h1>
       <div className="input-container">
         <label>Salary:</label>
-        <input className="input-box" readOnly placeholder="" />
+        <input
+          className="input-box"
+          readOnly
+          placeholder="Enter your desired salary"
+        />
         <br />
         <label>Location:</label>
-        <input className="input-box" readOnly placeholder="" />
+        <input className="input-box" readOnly placeholder="Enter a location" />
         <br />
         <label>Job Title:</label>
-        <input className="input-box" readOnly placeholder="" />
+        <input
+          className="input-box"
+          readOnly
+          placeholder="Enter your ideal job title"
+        />
         <br />
         <label>Job Type:</label>
-        <input className="input-box" readOnly placeholder="" />
+        <input className="input-box" readOnly placeholder="Enter a job type" />
         <br />
         <label>Remote:</label>
-        <input className="input-box" readOnly placeholder="" />
+        <input
+          className="input-box"
+          readOnly
+          placeholder="Select a remote option"
+        />
         <br />
         <button className="input-box" onClick={handleEdit}>
           Edit
