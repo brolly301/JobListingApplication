@@ -72,3 +72,14 @@ export const getUser = async () => {
     throw new Error("Please login to continue");
   }
 };
+export const getUser2 = async () => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/user2`, {
+      method: "GET",
+      credentials: "include",
+    });
+    return await response.json();
+  } catch (err) {
+    throw new Error("Please login to continue");
+  }
+};

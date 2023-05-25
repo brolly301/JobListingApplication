@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from "react";
-import { getUser } from "../APIs/authentication";
+import { createContext, useEffect, useState, useContext } from "react";
+import { getUser2 } from "../APIs/authentication";
 
 const UserDetailsContext = createContext();
 
@@ -9,11 +9,11 @@ export function UserDetailsProvider({ children }) {
     lastName: "",
     email: "",
     phoneNumber: "",
-    location: "",
   });
 
+  //Works on refresh only
   useEffect(() => {
-    const data = getUser().then((res) => {
+    const data = getUser2().then((res) => {
       setUserData({
         firstName: res.firstName,
         lastName: res.lastName,
@@ -21,10 +21,9 @@ export function UserDetailsProvider({ children }) {
         phoneNumber: res.phoneNumber,
         location: res.location,
       });
-      console.log(res);
     });
     return () => data;
-  }, [setUserData]);
+  }, []);
 
   const valueToShare = {
     userData,

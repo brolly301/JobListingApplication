@@ -13,7 +13,7 @@ import {
   useNavigate,
   Navigate,
 } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/user";
 import { getUser, logout } from "./APIs/authentication";
 import ProfilePage from "./routes/ProfilePage";
@@ -26,7 +26,7 @@ export default function App() {
     const unsubscribe = getUser()
       .then((res) => {
         if (res.error) return console.log(res.error);
-        else setUser(res._doc.username);
+        else setUser(res.username);
       })
       .catch((err) => console.log(err));
     return () => unsubscribe();

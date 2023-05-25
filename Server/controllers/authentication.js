@@ -50,5 +50,6 @@ exports.getLoggedInUser = (req, res) => {
     email: req.user.email,
     location: req.user.location,
     phoneNumber: req.user.phoneNumber,
+    username: req.user.username,
   });
 };
