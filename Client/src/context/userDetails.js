@@ -1,5 +1,6 @@
-import { createContext, useEffect, useState, useContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import { getUser2 } from "../APIs/authentication";
+import { getPreferences } from "../APIs/profile";
 
 const UserDetailsContext = createContext();
 
@@ -9,9 +10,20 @@ export function UserDetailsProvider({ children }) {
     lastName: "",
     email: "",
     phoneNumber: "",
+    location: "",
   });
 
-  //Works on refresh only
+  //needs fetched and updated
+  const [userPreferences, setUserPreferences] = useState({
+    salary: "",
+    location: "",
+    jobTitle: "",
+    jobType: "",
+  });
+
+  //Works on refresh only, this definitely to do with the login. Edit works perfectly but this setting of the user data needs to re-render
+  //once another user logins in, without having to refresh
+  //Also doesn't work after registered, only logged in
   useEffect(() => {
     const data = getUser2().then((res) => {
       setUserData({
@@ -25,9 +37,23 @@ export function UserDetailsProvider({ children }) {
     return () => data;
   }, []);
 
+  useEffect(() => {
+    const data = getPreferences().then((res) => {
+      setUserPreferences({
+        salary: res.salary || "",
+        location: res.location,
+        jobTitle: res.jobTitle || "",
+        jobType: res.jobType || "",
+      });
+    });
+    return () => data;
+  }, []);
+
   const valueToShare = {
     userData,
     setUserData,
+    userPreferences,
+    setUserPreferences,
   };
 
   return (

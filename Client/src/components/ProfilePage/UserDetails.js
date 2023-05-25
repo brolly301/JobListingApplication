@@ -4,7 +4,7 @@ import EditUserDetails from "./EditUserDetails";
 import "../../CSS/ProfilePage/UserPersonalDetails.css";
 
 export default function UserDetails() {
-  const { userData, email } = useContext(UserDetailsContext);
+  const { userData } = useContext(UserDetailsContext);
   const [showEdit, setShowEdit] = useState(false);
 
   const handleEdit = () => {
@@ -18,7 +18,7 @@ export default function UserDetails() {
         <h3>
           {userData.firstName} {userData.lastName}
         </h3>
-        <h3>{email}</h3>
+        <h3>{userData.email}</h3>
         <h3>{userData.location}</h3>
         <h3>{userData.phoneNumber}</h3>
         <button onClick={handleEdit}>Edit</button>

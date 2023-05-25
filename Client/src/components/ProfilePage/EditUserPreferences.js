@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "../../CSS/ProfilePage/UserPreferences.css";
+import { editPreferences } from "../../APIs/profile";
+import UserDetailsContext from "../../context/userDetails";
 
 export default function UserPreferences({ onEdit }) {
-  const [updatedData, setUpdatedData] = useState();
+  const { userPreferences, setUserPreferences } =
+    useContext(UserDetailsContext);
 
   const handleEdit = () => {
     onEdit();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await editPreferences(userPreferences);
+    onEdit();
   };
-
   const handleChange = (e) => {
-    setUpdatedData({ ...updatedData, [e.target.name]: e.target.value });
-    console.log(updatedData);
+    setUserPreferences({ ...userPreferences, [e.target.name]: e.target.value });
   };
 
   return (
@@ -26,7 +29,7 @@ export default function UserPreferences({ onEdit }) {
             onChange={handleChange}
             className="input-box"
             type="text"
-            placeholder="Salary"
+            defaultValue={userPreferences.salary}
             name="salary"
           />
           <input
@@ -34,20 +37,21 @@ export default function UserPreferences({ onEdit }) {
             className="input-box"
             type="text"
             placeholder="Location"
+            defaultValue={userPreferences.location}
             name="location"
           />
           <input
             onChange={handleChange}
             className="input-box"
             type="text"
-            placeholder="Job Title"
+            defaultValue={userPreferences.jobTitle}
             name="jobTitle"
           />
           <input
             onChange={handleChange}
             className="input-box"
             type="text"
-            placeholder="Job Type"
+            defaultValue={userPreferences.jobType}
             name="jobType"
           />
           <input

@@ -25,7 +25,7 @@ export const editUser = async ({
   }
 };
 
-export const addPreferences = async () => {
+export const addPreferences = async (username) => {
   try {
     const response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/profile/addPreferences`,
@@ -36,11 +36,12 @@ export const addPreferences = async () => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ username }),
       }
     );
     return await response.json();
   } catch (err) {
-    throw new Error("This has failed.");
+    throw new Error(err);
   }
 };
 
@@ -62,6 +63,21 @@ export const editPreferences = async ({
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedUser),
+      }
+    );
+    return await response.json();
+  } catch (err) {
+    throw new Error("This has failed.");
+  }
+};
+
+export const getPreferences = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/profile/preferences`,
+      {
+        credentials: "include",
+        method: "GET",
       }
     );
     return await response.json();

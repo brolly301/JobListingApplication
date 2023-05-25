@@ -31,6 +31,7 @@ export default function RegisterForm() {
       await register(formData);
       alert("Successful Registration");
       setUser(formData.username);
+      await addPreferences(formData.username);
       redirect("/");
     } catch (err) {
       alert(err);

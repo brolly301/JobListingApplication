@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const UserPreferenceSchema = new Schema({
   username: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
   },
   salary: {
     type: Number,

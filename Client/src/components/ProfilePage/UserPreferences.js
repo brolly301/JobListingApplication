@@ -2,9 +2,10 @@ import "../../CSS/ProfilePage/UserPreferences.css";
 import { useState, useContext } from "react";
 import UserDetailsContext from "../../context/userDetails";
 import EditUserPreferences from "./EditUserPreferences";
+import { getPreferences } from "../../APIs/profile";
 
 export default function UserPreferences() {
-  const { userData } = useContext(UserDetailsContext);
+  const { userPreferences } = useContext(UserDetailsContext);
 
   const [showEdit, setShowEdit] = useState(false);
 
@@ -20,21 +21,29 @@ export default function UserPreferences() {
         <input
           className="input-box"
           readOnly
-          placeholder="Enter your desired salary"
+          placeholder={userPreferences.salary || "Enter your desired salary"}
         />
         <br />
         <label>Location:</label>
-        <input className="input-box" readOnly placeholder="Enter a location" />
+        <input
+          className="input-box"
+          readOnly
+          placeholder={userPreferences.location || "Enter a location"}
+        />
         <br />
         <label>Job Title:</label>
         <input
           className="input-box"
           readOnly
-          placeholder="Enter your ideal job title"
+          placeholder={userPreferences.jobTitle || "Enter a job title"}
         />
         <br />
         <label>Job Type:</label>
-        <input className="input-box" readOnly placeholder="Enter a job type" />
+        <input
+          className="input-box"
+          readOnly
+          placeholder={userPreferences.jobType || "Enter a job type"}
+        />
         <br />
         <label>Remote:</label>
         <input
