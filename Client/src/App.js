@@ -47,7 +47,7 @@ export default function App() {
       });
     });
     // return () => data;
-  }, []);
+  }, [userData.user]);
 
   useEffect(() => {
     const userData = getUser()
