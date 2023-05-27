@@ -21,28 +21,28 @@ export default function UserPreferences() {
         <input
           className="input-box"
           readOnly
-          placeholder={userPreferences.salary || "Enter your desired salary"}
+          placeholder={userPreferences?.salary || "Enter your desired salary"}
         />
         <br />
         <label>Location:</label>
         <input
           className="input-box"
           readOnly
-          placeholder={userPreferences.location || "Enter a location"}
+          placeholder={userPreferences?.location || "Enter a location"}
         />
         <br />
         <label>Job Title:</label>
         <input
           className="input-box"
           readOnly
-          placeholder={userPreferences.jobTitle || "Enter a job title"}
+          placeholder={userPreferences?.jobTitle || "Enter a job title"}
         />
         <br />
         <label>Job Type:</label>
         <input
           className="input-box"
           readOnly
-          placeholder={userPreferences.jobType || "Enter a job type"}
+          placeholder={userPreferences?.jobType || "Enter a job type"}
         />
         <br />
         <label>Remote:</label>

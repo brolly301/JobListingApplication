@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import "../../CSS/ProfilePage/UserPersonalDetails.css";
-import UserDetailsContext from "../../context/userDetails";
+import useUserContext from "../../hooks/useUserContext";
 import { editUser } from "../../APIs/profile";
 
 export default function EditUserDetails({ onEdit }) {
-  const { userData, setUserData } = useContext(UserDetailsContext);
+  const { userData, setUserData } = useUserContext();
 
   const handleEdit = () => {
     onEdit();
@@ -32,7 +32,15 @@ export default function EditUserDetails({ onEdit }) {
             className="input-box"
             type="text"
             placeholder="Full name"
-            defaultValue={`${userData.firstName} ${userData.lastName}`}
+            defaultValue={userData.firstName}
+          />
+          <input
+            onChange={handleChange}
+            name="lastName"
+            className="input-box"
+            type="text"
+            placeholder="Full name"
+            defaultValue={userData.lastName}
           />
           <input
             onChange={handleChange}

@@ -8,6 +8,7 @@ const {
   login,
   logout,
   getLoggedInUser,
+  userById,
 } = require("../controllers/authentication");
 const { isLoggedIn } = require("../middleware/isLoggedIn");
 

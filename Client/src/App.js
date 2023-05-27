@@ -17,26 +17,62 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/user";
 import { getUser, logout } from "./APIs/authentication";
 import ProfilePage from "./routes/ProfilePage";
+import { getPreferences } from "./APIs/profile";
 
 export default function App() {
   const route = useNavigate();
-  const [user, setUser] = useState(null);
+  const [userData, setUserData] = useState({
+    user: null,
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    location: "",
+  });
+
+  const [userPreferences, setUserPreferences] = useState({
+    salary: "",
+    location: "",
+    jobTitle: "",
+    jobType: "",
+  });
 
   useEffect(() => {
-    const unsubscribe = getUser()
+    const data = getPreferences().then((res) => {
+      setUserPreferences({
+        salary: res.salary || "",
+        location: res.location || "",
+        jobTitle: res.jobTitle || "",
+        jobType: res.jobType || "",
+      });
+    });
+    // return () => data;
+  }, []);
+
+  useEffect(() => {
+    const userData = getUser()
       .then((res) => {
         if (res.error) return console.log(res.error);
-        else setUser(res.username);
+        else
+          setUserData({
+            user: res.username,
+            firstName: res.firstName,
+            lastName: res.lastName,
+            email: res.email,
+            phoneNumber: res.phoneNumber,
+            location: res.location,
+          });
       })
       .catch((err) => console.log(err));
-    return () => unsubscribe();
-  }, []);
+  }, [userData.user]);
 
   const handleLogout = (e) => {
     e.preventDefault();
     logout().then((message) => {
       console.log(message);
-      setUser(null);
+      setUserData({
+        user: null,
+      });
       route("/");
     });
   };
@@ -53,7 +89,7 @@ export default function App() {
         <li>
           <Link to="/profile">Upload CV</Link>
         </li>
-        {!user ? (
+        {!userData.user ? (
           <>
             <li>
               <Link to="/login">Login</Link>
@@ -77,18 +113,24 @@ export default function App() {
       <div>
         <Outlet />
       </div>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider
+        value={{ userData, setUserData, userPreferences, setUserPreferences }}
+      >
         <Routes>
           <Route path="/" index element={<HomePage />} />
           <Route path="/search" element={<ResultsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="/register"
-            element={user ? <Navigate replace to="/" /> : <RegisterPage />}
+            element={
+              userData.user ? <Navigate replace to="/" /> : <RegisterPage />
+            }
           />
           <Route
             path="/login"
-            element={user ? <Navigate replace to="/" /> : <LoginPage />}
+            element={
+              userData.user ? <Navigate replace to="/" /> : <LoginPage />
+            }
           />
         </Routes>
       </UserContext.Provider>

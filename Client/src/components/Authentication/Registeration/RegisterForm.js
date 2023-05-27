@@ -18,7 +18,6 @@ export default function RegisterForm() {
   });
 
   const redirect = useNavigate();
-  const { setUser } = useUserContext();
   const handleChange = (e) => {
     setFormData((prevData) => {
       return { ...prevData, [e.target.id]: e.target.value };
@@ -30,9 +29,8 @@ export default function RegisterForm() {
     try {
       await register(formData);
       alert("Successful Registration");
-      setUser(formData.username);
       await addPreferences(formData.username);
-      redirect("/");
+      redirect("/login");
     } catch (err) {
       alert(err);
     }

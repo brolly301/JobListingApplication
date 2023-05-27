@@ -42,6 +42,18 @@ exports.logout = async (req, res) => {
   });
 };
 
+// exports.userById = async (req, res, next) => {
+//   User.findById(req._id).exec((err, user) => {
+//     if (err || !user) {
+//       return res.status(404).json({
+//         error: "User not found",
+//       });
+//     }
+
+//     req.user = user;
+//   });
+// };
+
 exports.getLoggedInUser = (req, res) => {
   return res.status(200).json({
     message: "User is still logged in",

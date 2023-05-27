@@ -2,10 +2,10 @@ import { useState, useContext } from "react";
 import "../../CSS/ProfilePage/UserPreferences.css";
 import { editPreferences } from "../../APIs/profile";
 import UserDetailsContext from "../../context/userDetails";
+import useUserContext from "../../hooks/useUserContext";
 
 export default function UserPreferences({ onEdit }) {
-  const { userPreferences, setUserPreferences } =
-    useContext(UserDetailsContext);
+  const { userPreferences, setUserPreferences } = useUserContext();
 
   const handleEdit = () => {
     onEdit();
@@ -29,7 +29,7 @@ export default function UserPreferences({ onEdit }) {
             onChange={handleChange}
             className="input-box"
             type="text"
-            defaultValue={userPreferences.salary}
+            defaultValue={userPreferences?.salary || ""}
             name="salary"
           />
           <input
@@ -37,21 +37,21 @@ export default function UserPreferences({ onEdit }) {
             className="input-box"
             type="text"
             placeholder="Location"
-            defaultValue={userPreferences.location}
+            defaultValue={userPreferences?.location}
             name="location"
           />
           <input
             onChange={handleChange}
             className="input-box"
             type="text"
-            defaultValue={userPreferences.jobTitle}
+            defaultValue={userPreferences?.jobTitle}
             name="jobTitle"
           />
           <input
             onChange={handleChange}
             className="input-box"
             type="text"
-            defaultValue={userPreferences.jobType}
+            defaultValue={userPreferences?.jobType}
             name="jobType"
           />
           <input

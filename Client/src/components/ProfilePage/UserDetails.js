@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import UserDetailsContext from "../../context/userDetails";
+import { UserContext } from "../../context/user";
 import EditUserDetails from "./EditUserDetails";
 import "../../CSS/ProfilePage/UserPersonalDetails.css";
 
 export default function UserDetails() {
-  const { userData } = useContext(UserDetailsContext);
+  const { userData } = useContext(UserContext);
   const [showEdit, setShowEdit] = useState(false);
 
   const handleEdit = () => {
