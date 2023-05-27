@@ -5,10 +5,14 @@ const morgan = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
 const passport = require("passport");
+const bodyParser = require("body-parser");
 const LocalAuth = require("passport-local");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const fileUpload = require("express-fileupload");
 const mongoSanitize = require("express-mongo-sanitize");
+const multipart = require("connect-multiparty");
+
 const app = express();
 
 //models
@@ -47,11 +51,13 @@ app.use((req, res, next) => {
 });
 
 //middlewares
+
 app.use(morgan("dev"));
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 app.use(express.json());
+app.use(fileUpload());
 
 //route imports
 const testRoutes = require("./routes/test");
