@@ -57,7 +57,8 @@ export default function JobSearch() {
         <button
           type="button"
           onClick={handleLocation}
-          className="job-location-button">
+          className="job-location-button"
+        >
           <GoLocation style={{ fontSize: "19px" }} />
         </button>
         <button type="submit" className="job-search-button">

@@ -1,12 +1,27 @@
 import "../../CSS/HomePage/JobCategories.css";
+import useJobsContext from "../../hooks/useJobsContext";
+import useUserContext from "../../hooks/useUserContext";
 import JobCategory from "./JobCategory";
+import { useNavigate } from "react-router-dom";
 
 export default function JobCategories() {
+  const { handleSubmit, handleLocationSubmit, location } = useJobsContext();
+  const { userData } = useUserContext();
+  const redirect = useNavigate();
+  const handleClick = (e) => {
+    e.preventDefault();
+    handleSubmit("Engineering", userData.location || "Belfast");
+    redirect("/search");
+  };
+
   return (
     <div>
       <h3 className="job-category-title">Explore Careers</h3>
       <div className="job-category-container">
-        <JobCategory src="https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+        <JobCategory
+          onClick={handleClick}
+          src="https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        >
           Engineering
         </JobCategory>
         <JobCategory src="https://images.pexels.com/photos/113850/pexels-photo-113850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
