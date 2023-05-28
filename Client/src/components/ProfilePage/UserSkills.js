@@ -4,7 +4,7 @@ import EditUserSkills from "./EditUserSkills";
 export default function UserSkills() {
   const [showEdit, setShowEdit] = useState(false);
 
-  const handleChange = (e) => {
+  const handleEdit = (e) => {
     setShowEdit(!showEdit);
   };
 
@@ -17,13 +17,13 @@ export default function UserSkills() {
         <input type="text" placeholder="Skills" readOnly />
         <input type="text" placeholder="Languages" readOnly />
         <input type="text" placeholder="Driving License" readOnly />
-        <button onClick={handleChange}>Edit</button>
+        <button onClick={handleEdit}>Edit</button>
       </div>
     </div>
   );
 
   if (showEdit) {
-    content = <EditUserSkills onEdit={handleChange} />;
+    content = <EditUserSkills onEdit={handleEdit} />;
   }
 
   return <div>{content}</div>;

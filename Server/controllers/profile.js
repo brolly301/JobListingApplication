@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const multer = require("multer");
 const UserPreferences = require("../models/userPreference");
+const UserSkills = require("../models/userSkills");
 const File = require("../models/file");
 const fileUpload = require("express-fileupload");
 
@@ -25,13 +26,39 @@ exports.addPreferences = async (req, res) => {
   res.send(insertedUser);
 };
 
-//This works almost fully but the request is still sent when its null, so need to sort this
 exports.getPreferences = async (req, res) => {
   if (req.user) {
     const preferences = await UserPreferences.findOne({
       username: req.user.username,
     });
     res.send(preferences);
+  } else {
+    return res.status(404).json();
+  }
+};
+
+exports.editSkills = async (req, res) => {
+  const update = await UserSkills.findOne({ username: req.user.username });
+
+  const updatedUser = await UserSkills.findByIdAndUpdate(update._id, {
+    ...req.body,
+  });
+  res.send(updatedUser);
+};
+
+exports.addSkills = async (req, res) => {
+  const insertedUser = await UserSkills.insertMany({
+    username: req.body.username,
+  });
+  res.send(insertedUser);
+};
+
+exports.getSkills = async (req, res) => {
+  if (req.user) {
+    const skills = await UserSkills.findOne({
+      username: req.user.username,
+    });
+    res.send(skills);
   } else {
     return res.status(404).json();
   }

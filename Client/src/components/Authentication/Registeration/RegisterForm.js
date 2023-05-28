@@ -3,7 +3,7 @@ import "../../../CSS/RegisterPage/RegisterForm.css";
 import { register } from "../../../APIs/authentication";
 import { useNavigate } from "react-router-dom";
 import useUserContext from "../../../hooks/useUserContext";
-import { addPreferences } from "../../../APIs/profile";
+import { addPreferences, addSkills } from "../../../APIs/profile";
 
 export default function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -28,8 +28,9 @@ export default function RegisterForm() {
     e.preventDefault();
     try {
       await register(formData);
-      alert("Successful Registration");
+      await addSkills(formData.username);
       await addPreferences(formData.username);
+      alert("Successful Registration");
       redirect("/login");
     } catch (err) {
       alert(err);

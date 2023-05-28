@@ -17,7 +17,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/user";
 import { getUser, logout } from "./APIs/authentication";
 import ProfilePage from "./routes/ProfilePage";
-import { getPreferences } from "./APIs/profile";
+import { getPreferences, getSkills } from "./APIs/profile";
 
 export default function App() {
   const route = useNavigate();
@@ -36,6 +36,25 @@ export default function App() {
     jobTitle: "",
     jobType: "",
   });
+
+  const [userSkills, setUserSkills] = useState({
+    workExperience: "",
+    education: "",
+    skills: "",
+    languages: "",
+  });
+
+  useEffect(() => {
+    const data = getSkills().then((res) => {
+      setUserSkills({
+        workExperience: res.workExperience || "",
+        education: res.education || "",
+        skills: res.skills || "",
+        languages: res.languages || "",
+      });
+    });
+    // return () => data;
+  }, [userData.user]);
 
   useEffect(() => {
     const data = getPreferences().then((res) => {
@@ -114,7 +133,14 @@ export default function App() {
         <Outlet />
       </div>
       <UserContext.Provider
-        value={{ userData, setUserData, userPreferences, setUserPreferences }}
+        value={{
+          userData,
+          setUserData,
+          userPreferences,
+          setUserPreferences,
+          userSkills,
+          setUserSkills,
+        }}
       >
         <Routes>
           <Route path="/" index element={<HomePage />} />

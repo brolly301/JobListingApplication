@@ -3,7 +3,7 @@ import useJobsContext from "../../hooks/useJobsContext";
 import useUserContext from "../../hooks/useUserContext";
 import JobCategory from "./JobCategory";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function JobCategories() {
   const { handleSubmit, handleLocationSubmit, location } = useJobsContext();
@@ -11,11 +11,10 @@ export default function JobCategories() {
 
   const { userData } = useUserContext();
   const redirect = useNavigate();
+
   const handleClick = (e) => {
-    e.preventDefault();
     setCategory(e.currentTarget.getAttribute("data-value"));
-    console.log(category);
-    handleSubmit(category, userData.location || "Belfast");
+    handleSubmit(category, "Belfast");
     redirect("/search");
   };
 
@@ -38,41 +37,46 @@ export default function JobCategories() {
           Computing
         </JobCategory>
         <JobCategory
+          onClick={handleClick}
           src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          name="Business"
+          data-value="Business"
         >
           Business
         </JobCategory>
         <JobCategory
+          onClick={handleClick}
           src="https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          name="Finance"
+          data-value="Finance"
         >
           Finance
         </JobCategory>
       </div>
       <div className="job-category-container">
         <JobCategory
+          onClick={handleClick}
           src="https://images.pexels.com/photos/288477/pexels-photo-288477.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          name="Management"
+          data-value="Management"
         >
           Management
         </JobCategory>
         <JobCategory
           onClick={handleClick}
           src="https://images.pexels.com/photos/935943/pexels-photo-935943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          name="Teaching"
+          data-value="Teaching"
         >
           Teaching
         </JobCategory>
         <JobCategory
+          onClick={handleClick}
           src="https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          name="Medical"
+          data-value="Medical"
         >
           Medical
         </JobCategory>
         <JobCategory
+          onClick={handleClick}
           src="https://images.pexels.com/photos/7581123/pexels-photo-7581123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          name="Human Resources"
+          data-value="Human Resources"
         >
           Human Resources
         </JobCategory>

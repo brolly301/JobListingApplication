@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSkillsSchema = new Schema({
+  username: {
+    type: String,
+  },
   workExperience: {
     type: String,
   },
