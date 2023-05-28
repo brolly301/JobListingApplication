@@ -27,10 +27,14 @@ exports.addPreferences = async (req, res) => {
 
 //This works almost fully but the request is still sent when its null, so need to sort this
 exports.getPreferences = async (req, res) => {
-  const preferences = await UserPreferences.findOne({
-    username: req.user.username,
-  });
-  res.send(preferences);
+  if (req.user) {
+    const preferences = await UserPreferences.findOne({
+      username: req.user.username,
+    });
+    res.send(preferences);
+  } else {
+    return res.status(404).json();
+  }
 };
 
 exports.fileUpload = async (res, req) => {
