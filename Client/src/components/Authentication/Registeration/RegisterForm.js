@@ -2,8 +2,6 @@ import { useContext, useState } from "react";
 import "../../../CSS/RegisterPage/RegisterForm.css";
 import { register } from "../../../APIs/authentication";
 import { useNavigate } from "react-router-dom";
-import useUserContext from "../../../hooks/useUserContext";
-import { addPreferences, addSkills } from "../../../APIs/profile";
 
 export default function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -28,8 +26,6 @@ export default function RegisterForm() {
     e.preventDefault();
     try {
       await register(formData);
-      await addSkills(formData.username);
-      await addPreferences(formData.username);
       alert("Successful Registration");
       redirect("/login");
     } catch (err) {

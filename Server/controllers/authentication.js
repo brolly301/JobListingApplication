@@ -1,9 +1,17 @@
 const User = require("../models/user");
+const UserPreferences = require("../models/userPreference");
+const UserSkills = require("../models/userSkills");
 
 exports.register = async (req, res) => {
   try {
     const newUser = new User({ ...req.body });
     const registerUser = await User.register(newUser, req.body.password);
+    const preferences = await UserPreferences.insertMany({
+      username: req.body.username,
+    });
+    const skills = await UserSkills.insertMany({
+      username: req.body.username,
+    });
     res.send(registerUser);
     req.login(registerUser, (err) => {
       if (err) return next(err);

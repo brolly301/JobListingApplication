@@ -9,11 +9,14 @@ export default function JobCategories() {
   const { handleSubmit, handleLocationSubmit, location } = useJobsContext();
   const [category, setCategory] = useState("");
 
-  const { userData } = useUserContext();
   const redirect = useNavigate();
 
-  const handleClick = (e) => {
+  const handleHover = (e) => {
     setCategory(e.currentTarget.getAttribute("data-value"));
+    console.log(category);
+  };
+
+  const handleClick = (e) => {
     handleSubmit(category, "Belfast");
     redirect("/search");
   };
@@ -24,6 +27,7 @@ export default function JobCategories() {
       <div className="job-category-container">
         <JobCategory
           onClick={handleClick}
+          onMouseOver={handleHover}
           src="https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           data-value="Engineering"
         >
@@ -31,6 +35,7 @@ export default function JobCategories() {
         </JobCategory>
         <JobCategory
           onClick={handleClick}
+          onMouseOver={handleHover}
           src="https://images.pexels.com/photos/113850/pexels-photo-113850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           data-value="Computing"
         >
@@ -38,6 +43,7 @@ export default function JobCategories() {
         </JobCategory>
         <JobCategory
           onClick={handleClick}
+          onMouseOver={handleHover}
           src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           data-value="Business"
         >
@@ -45,6 +51,7 @@ export default function JobCategories() {
         </JobCategory>
         <JobCategory
           onClick={handleClick}
+          onMouseOver={handleHover}
           src="https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg?auto=compress&cs=tinysrgb&w=1600"
           data-value="Finance"
         >
@@ -54,6 +61,7 @@ export default function JobCategories() {
       <div className="job-category-container">
         <JobCategory
           onClick={handleClick}
+          onMouseOver={handleHover}
           src="https://images.pexels.com/photos/288477/pexels-photo-288477.jpeg?auto=compress&cs=tinysrgb&w=1600"
           data-value="Management"
         >
@@ -61,6 +69,7 @@ export default function JobCategories() {
         </JobCategory>
         <JobCategory
           onClick={handleClick}
+          onMouseOver={handleHover}
           src="https://images.pexels.com/photos/935943/pexels-photo-935943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           data-value="Teaching"
         >
@@ -68,6 +77,7 @@ export default function JobCategories() {
         </JobCategory>
         <JobCategory
           onClick={handleClick}
+          onMouseOver={handleHover}
           src="https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           data-value="Medical"
         >
@@ -75,6 +85,7 @@ export default function JobCategories() {
         </JobCategory>
         <JobCategory
           onClick={handleClick}
+          onMouseOver={handleHover}
           src="https://images.pexels.com/photos/7581123/pexels-photo-7581123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           data-value="Human Resources"
         >

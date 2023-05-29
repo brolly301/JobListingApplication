@@ -19,13 +19,6 @@ exports.editPreferences = async (req, res) => {
   res.send(updatedUser);
 };
 
-exports.addPreferences = async (req, res) => {
-  const insertedUser = await UserPreferences.insertMany({
-    username: req.body.username,
-  });
-  res.send(insertedUser);
-};
-
 exports.getPreferences = async (req, res) => {
   if (req.user) {
     const preferences = await UserPreferences.findOne({
@@ -46,13 +39,6 @@ exports.editSkills = async (req, res) => {
   res.send(updatedUser);
 };
 
-exports.addSkills = async (req, res) => {
-  const insertedUser = await UserSkills.insertMany({
-    username: req.body.username,
-  });
-  res.send(insertedUser);
-};
-
 exports.getSkills = async (req, res) => {
   if (req.user) {
     const skills = await UserSkills.findOne({
@@ -65,7 +51,7 @@ exports.getSkills = async (req, res) => {
 };
 
 exports.fileUpload = async (res, req) => {
-  console.log(req.files);
+  console.log(res.files);
   // const filename = "newfile";
   // const file = req.files[0].name;
   // let uploadPath = __dirname + "/uploads/" + filename;

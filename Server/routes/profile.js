@@ -15,13 +15,9 @@ const {
 
 router.patch("/editUser", editUser);
 
-router.post("/addPreferences", addPreferences);
-
 router.patch("/editPreferences", editPreferences);
 
 router.get("/preferences", getPreferences);
-
-router.post("/addSkills", addSkills);
 
 router.patch("/editSkills", editSkills);
 

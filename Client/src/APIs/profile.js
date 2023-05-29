@@ -25,26 +25,6 @@ export const editUser = async ({
   }
 };
 
-export const addPreferences = async (username) => {
-  try {
-    const response = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/profile/addPreferences`,
-      {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username }),
-      }
-    );
-    return await response.json();
-  } catch (err) {
-    throw new Error(err);
-  }
-};
-
 export const editPreferences = async ({
   salary,
   location,
@@ -83,26 +63,6 @@ export const getPreferences = async () => {
     return await response.json();
   } catch (err) {
     throw new Error("This has failed.");
-  }
-};
-
-export const addSkills = async (username) => {
-  try {
-    const response = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/profile/addSkills`,
-      {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username }),
-      }
-    );
-    return await response.json();
-  } catch (err) {
-    throw new Error(err);
   }
 };
 
