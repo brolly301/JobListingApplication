@@ -11,7 +11,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const fileUpload = require("express-fileupload");
 const mongoSanitize = require("express-mongo-sanitize");
-const multipart = require("connect-multiparty");
+const multer = require("multer");
 
 const app = express();
 
@@ -51,22 +51,23 @@ app.use((req, res, next) => {
 });
 
 //middlewares
-
+// app.use(fileUpload());
 app.use(morgan("dev"));
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 app.use(express.json());
-app.use(fileUpload());
 
 //route imports
-const testRoutes = require("./routes/test");
+
 const userRoutes = require("./routes/authentication.js");
 const profileRoutes = require("./routes/profile.js");
+const searchRoutes = require("./routes/jobs.js");
 
 //routes
 app.use("/", userRoutes);
 app.use("/profile", profileRoutes);
+app.use("/search", searchRoutes);
 
 //port and listener
 const port = 8080;

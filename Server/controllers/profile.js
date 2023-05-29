@@ -51,7 +51,7 @@ exports.getSkills = async (req, res) => {
 };
 
 exports.fileUpload = async (res, req) => {
-  console.log(res.files);
+  console.log(req.file.myfile);
   // const filename = "newfile";
   // const file = req.files[0].name;
   // let uploadPath = __dirname + "/uploads/" + filename;

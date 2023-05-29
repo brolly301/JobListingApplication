@@ -15,11 +15,7 @@ export default function UploadCV() {
     formData.append("myfile", file);
 
     axios
-      .post("http://localhost:8080/profile/fileUpload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+      .post("http://localhost:8080/profile/fileUpload", { data: formData })
       .then((res) => {
         alert("Success dawg");
         console.log(res);
@@ -33,13 +29,7 @@ export default function UploadCV() {
     <div>
       <h3>Upload CV</h3>
       <form onSubmit={handleSubmit} encType="multipart/form-data" method="POST">
-        <input
-          onChange={handleChange}
-          type="file"
-          name="myfile"
-          id="myfile"
-          multiple
-        />
+        <input onChange={handleChange} type="file" name="myfile" id="myfile" />
         <button type="submit">Upload</button>
       </form>
     </div>

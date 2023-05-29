@@ -1,7 +1,7 @@
 const express = require("express");
+const { getResults } = require("../controllers/jobs");
 const router = express.Router();
-const { getTest } = require("../controllers/test");
 
-router.get("/test", getTest);
+router.get("/:id", getResults);
 
 module.exports = router;

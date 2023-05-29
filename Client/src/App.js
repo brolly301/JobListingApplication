@@ -4,6 +4,7 @@ import HomePage from "./routes/HomePage";
 import RegisterPage from "./routes/RegisterPage";
 import ResultsPage from "./routes/ResultsPage";
 import LoginPage from "./routes/LoginPage";
+import JobPage from "./routes/JobPage";
 import "./index.css";
 import {
   Link,
@@ -140,11 +141,11 @@ export default function App() {
           setUserPreferences,
           userSkills,
           setUserSkills,
-        }}
-      >
+        }}>
         <Routes>
           <Route path="/" index element={<HomePage />} />
           <Route path="/search" element={<ResultsPage />} />
+          <Route path="/search/result" element={<JobPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="/register"

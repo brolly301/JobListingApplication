@@ -1,6 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const fileUploader = require("express-fileupload");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: "./public/uploads/images",
+  filename: "myfile",
+});
+
+const upload = multer({ storage: storage });
 
 const {
   editUser,
@@ -23,6 +30,8 @@ router.patch("/editSkills", editSkills);
 
 router.get("/skills", getSkills);
 
-router.post("/fileUpload", fileUpload);
+router.post("/fileUpload", upload.single("myfile"), (req, res) => {
+  console.log(req.file[0]);
+});
 
 module.exports = router;
