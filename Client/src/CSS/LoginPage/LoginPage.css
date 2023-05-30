@@ -8,11 +8,12 @@
   margin-bottom: 10px;
 }
 
-h1 {
+.login-heading {
   margin-bottom: 0px;
+  text-align: center;
 }
 
-h4 {
+.login-subheading {
   margin-bottom: 20px;
 }
 

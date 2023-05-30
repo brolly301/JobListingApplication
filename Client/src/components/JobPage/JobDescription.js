@@ -1,6 +1,6 @@
 import "../../CSS/JobPage/JobDescription.css";
 
-export default function JobDescription() {
+export default function JobDescription({ result }) {
   return (
     <div>
       <hr />
@@ -9,17 +9,7 @@ export default function JobDescription() {
       <div className="description-container">
         <h4 className="description-header">Job Summary</h4>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam iure
-          nobis tenetur, asperiores obcaecati a delectus assumenda temporibus
-          nesciunt nulla natus quia deleniti sint ipsum explicabo! Est tempore
-          voluptatibus exercitationem. Sit hic odit exercitationem quasi facere
-          nulla enim ullam autem quos provident ipsam, aliquam, ex cupiditate
-          quis obcaecati? Earum consequuntur accusamus ex nobis quibusdam
-          molestias ab repellat tenetur, quisquam deleniti. Recusandae quidem
-          numquam quae magni quibusdam beatae ullam labore neque corporis,
-          reiciendis perferendis libero debitis in minus hic fuga dolorem omnis
-          sequi excepturi rem alias eveniet! Dolor pariatur eligendi totam.
-          Aliquam officiis repudiandae consequatur reprehenderit expedita sequi.
+          {result.description}
           <br /> <br />
           Dolor, magnam, praesentium repudiandae sint, nobis autem doloribus
           officia necessitatibus aliquam quisquam atque maxime facilis numquam

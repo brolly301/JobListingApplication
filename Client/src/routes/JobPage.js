@@ -15,7 +15,7 @@ export default function JobPage() {
       <JobSearch />
       <hr />
       <JobDetails result={result} />
-      <JobDescription />
+      <JobDescription result={result} />
     </div>
   );
 }

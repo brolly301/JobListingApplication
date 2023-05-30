@@ -41,8 +41,10 @@ export default function LoginForm() {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Login</h1>
-      <h4>Please enter your login details below.</h4>
+      <h1 className="login-heading">Login</h1>
+      <h4 className="login-subheading">
+        Please enter your login details below.
+      </h4>
       <form onSubmit={handleLogin}>
         <div className="input-container">
           <input
