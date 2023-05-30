@@ -1,20 +1,15 @@
 import "../../CSS/HomePage/JobShow.css";
 import { MdLocationOn, MdPerson, MdCategory } from "react-icons/md";
 import { BiMoney } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { results } from "../../APIs/jobs";
 
 export default function JobShow({ result }) {
-  const redirect = useNavigate();
-
-  const handleClick = (e) => {
-    console.log("Clicked");
-    redirect(`/search/result/${result.adref}`);
-    //function to send the relevant data to this page through API
-  };
-
   return (
-    <div className="job-show" onClick={handleClick}>
-      <a href={`/search/result/${result.adref}`}>
+    <div className="job-show">
+      <Link
+        to={`/search/result/${result.adref.substring(0, 20)}`}
+        state={{ result: result }}>
         <div className="job-title">
           <h3>{result.title}</h3>
         </div>
@@ -53,7 +48,7 @@ export default function JobShow({ result }) {
             alt=""
           />
         </div>
-      </a>
+      </Link>
     </div>
   );
 }

@@ -2,7 +2,7 @@ nav {
   padding-left: 20px;
 }
 
-ul {
+.nav-ul {
   display: flex;
   list-style-type: none;
   margin: 0;
@@ -14,11 +14,11 @@ ul {
   align-items: center;
 }
 
-li {
+.nav-li {
   display: inline;
 }
 
-li a {
+.nav-link {
   display: inherit;
   color: white;
   text-align: center;
@@ -26,11 +26,11 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+.nav-link:hover {
   background-color: #111;
 }
 
-span {
+/* span {
   display: inherit;
   color: white;
   text-align: center;
@@ -40,4 +40,4 @@ span {
 
 span:hover {
   background-color: #111;
-}
+} */

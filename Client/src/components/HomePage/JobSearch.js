@@ -8,6 +8,7 @@ import useJobsContext from "../../hooks/useJobsContext";
 export default function JobSearch() {
   const { handleSubmit, handleLocationSubmit, location } = useJobsContext();
 
+  const [result, setResult] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     jobLocation: "",
@@ -57,8 +58,7 @@ export default function JobSearch() {
         <button
           type="button"
           onClick={handleLocation}
-          className="job-location-button"
-        >
+          className="job-location-button">
           <GoLocation style={{ fontSize: "19px" }} />
         </button>
         <button type="submit" className="job-search-button">

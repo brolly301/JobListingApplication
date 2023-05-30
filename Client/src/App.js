@@ -99,32 +99,44 @@ export default function App() {
 
   return (
     <>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
+      <ul className="nav-ul">
+        <li className="nav-li">
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
         </li>
-        <li>
-          <Link to="/search">Find Jobs</Link>
+        <li className="nav-li">
+          <Link className="nav-link" to="/search">
+            Find Jobs
+          </Link>
         </li>
-        <li>
-          <Link to="/profile">Upload CV</Link>
+        <li className="nav-li">
+          <Link className="nav-link" to="/profile">
+            Upload CV
+          </Link>
         </li>
         {!userData.user ? (
           <>
-            <li>
-              <Link to="/login">Login</Link>
+            <li className="nav-li">
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
             </li>
 
-            <li>
-              <Link to="/register">Register</Link>
+            <li className="nav-li">
+              <Link className="nav-link" to="/register">
+                Register
+              </Link>
             </li>
           </>
         ) : (
           <>
-            <li>
-              <Link to="/profile">Profile</Link>
+            <li className="nav-li">
+              <Link className="nav-link" to="/profile">
+                Profile
+              </Link>
             </li>
-            <li>
+            <li className="nav-li">
               <span onClick={handleLogout}>Logout</span>
             </li>
           </>
@@ -145,7 +157,7 @@ export default function App() {
         <Routes>
           <Route path="/" index element={<HomePage />} />
           <Route path="/search" element={<ResultsPage />} />
-          <Route path="/search/result" element={<JobPage />} />
+          <Route path="/search/result/:id" element={<JobPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="/register"
