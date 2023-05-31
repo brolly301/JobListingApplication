@@ -137,7 +137,9 @@ export default function App() {
               </Link>
             </li>
             <li className="nav-li">
-              <span onClick={handleLogout}>Logout</span>
+              <span className="logout" onClick={handleLogout}>
+                Logout
+              </span>
             </li>
           </>
         )}
@@ -153,7 +155,8 @@ export default function App() {
           setUserPreferences,
           userSkills,
           setUserSkills,
-        }}>
+        }}
+      >
         <Routes>
           <Route path="/" index element={<HomePage />} />
           <Route path="/search" element={<ResultsPage />} />

@@ -8,8 +8,9 @@ export default function JobShow({ result }) {
   return (
     <div className="job-show">
       <Link
-        to={`/search/result/${result.adref.substring(0, 20)}`}
-        state={{ result: result }}>
+        to={`/search/result/${result.adref.slice(-20)}`}
+        state={{ result: result }}
+      >
         <div className="job-title">
           <h3>{result.title}</h3>
         </div>

@@ -1,0 +1,26 @@
+.details-container {
+  width: 1000px;
+  height: 270px;
+  margin: 0 auto;
+}
+
+.details-1 {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  margin: 70px 0px;
+  justify-content: space-around;
+}
+.details-2 {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0px;
+}
+
+.details-1 > h2 {
+  font-weight: 400;
+}
+.details-2 > h2 {
+  font-weight: 400;
+}
