@@ -19,6 +19,7 @@ import { UserContext } from "./context/user";
 import { getUser, logout } from "./APIs/authentication";
 import ProfilePage from "./routes/ProfilePage";
 import { getPreferences, getSkills } from "./APIs/profile";
+import SavedPage from "./routes/SavedPage";
 
 export default function App() {
   const route = useNavigate();
@@ -44,6 +45,18 @@ export default function App() {
     skills: "",
     languages: "",
   });
+
+  useEffect(() => {
+    const data = getSkills().then((res) => {
+      setUserSkills({
+        workExperience: res.workExperience || "",
+        education: res.education || "",
+        skills: res.skills || "",
+        languages: res.languages || "",
+      });
+    });
+    // return () => data;
+  }, [userData.user]);
 
   useEffect(() => {
     const data = getSkills().then((res) => {
@@ -132,6 +145,11 @@ export default function App() {
         ) : (
           <>
             <li className="nav-li">
+              <Link className="nav-link" to="/jobs">
+                Saved
+              </Link>
+            </li>
+            <li className="nav-li">
               <Link className="nav-link" to="/profile">
                 Profile
               </Link>
@@ -155,12 +173,12 @@ export default function App() {
           setUserPreferences,
           userSkills,
           setUserSkills,
-        }}
-      >
+        }}>
         <Routes>
           <Route path="/" index element={<HomePage />} />
           <Route path="/search" element={<ResultsPage />} />
           <Route path="/search/result/:id" element={<JobPage />} />
+          <Route path="/jobs" element={<SavedPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="/register"
