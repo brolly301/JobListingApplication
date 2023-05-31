@@ -11,7 +11,7 @@ exports.editUser = async (req, res) => {
 };
 
 exports.editPreferences = async (req, res) => {
-  const update = await UserPreferences.findOne({ username: req.user.username });
+  const update = await UserPreferences.findOne({ username: req.user._id });
 
   const updatedUser = await UserPreferences.findByIdAndUpdate(update._id, {
     ...req.body,
@@ -22,7 +22,7 @@ exports.editPreferences = async (req, res) => {
 exports.getPreferences = async (req, res) => {
   if (req.user) {
     const preferences = await UserPreferences.findOne({
-      username: req.user.username,
+      username: req.user._id,
     });
     res.send(preferences);
   } else {
@@ -31,7 +31,7 @@ exports.getPreferences = async (req, res) => {
 };
 
 exports.editSkills = async (req, res) => {
-  const update = await UserSkills.findOne({ username: req.user.username });
+  const update = await UserSkills.findOne({ username: req.user._id });
 
   const updatedUser = await UserSkills.findByIdAndUpdate(update._id, {
     ...req.body,
@@ -42,7 +42,7 @@ exports.editSkills = async (req, res) => {
 exports.getSkills = async (req, res) => {
   if (req.user) {
     const skills = await UserSkills.findOne({
-      username: req.user.username,
+      username: req.user._id,
     });
     res.send(skills);
   } else {

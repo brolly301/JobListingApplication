@@ -1,10 +1,19 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const UserPreferenceSchema = new Schema({
+const SavedJobSchema = new Schema({
+  adRef: {
+    type: String,
+  },
   username: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+  },
+  title: {
+    type: String,
+  },
+  company: {
+    type: String,
   },
   salary: {
     type: Number,
@@ -12,17 +21,18 @@ const UserPreferenceSchema = new Schema({
   location: {
     type: String,
   },
-  jobTitle: {
+  category: {
     type: String,
   },
-  jobType: {
+  contractTime: {
     type: String,
   },
-  remote: {
+  contractType: {
     type: String,
-    enum: ["remote", "hybrid", "office"],
-    default: "office",
+  },
+  link: {
+    type: String,
   },
 });
 
-module.exports = mongoose.model("UserPreferences", UserPreferenceSchema);
+module.exports = mongoose.model("SavedJob", SavedJobSchema);

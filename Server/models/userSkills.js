@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const UserSkillsSchema = new Schema({
   username: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
   workExperience: {
     type: String,

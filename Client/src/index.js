@@ -5,13 +5,14 @@ import "./CSS/Navbar.css";
 import { JobProvider } from "./context/jobs";
 import { BrowserRouter } from "react-router-dom";
 import { UserDetailsProvider } from "./context/userDetails";
+import { SavedJobProvider } from "./context/savedJobs";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <UserDetailsProvider>
+  <SavedJobProvider>
     <JobProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </JobProvider>
-  </UserDetailsProvider>
+  </SavedJobProvider>
 );

@@ -66,7 +66,7 @@ const searchRoutes = require("./routes/jobs.js");
 //routes
 app.use("/", userRoutes);
 app.use("/profile", profileRoutes);
-app.use("/search", searchRoutes);
+app.use("/job", searchRoutes);
 
 //port and listener
 const port = 8080;

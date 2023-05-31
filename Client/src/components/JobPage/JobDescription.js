@@ -1,6 +1,45 @@
 import "../../CSS/JobPage/JobDescription.css";
+import { saveJob, submitApplication } from "../../APIs/jobs";
 
 export default function JobDescription({ result }) {
+  const capitalise = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  const handleSubmitApplication = async (e) => {
+    e.preventDefault();
+    await submitApplication({
+      adRef: result.adref,
+      title: result.title,
+      company: result.company.display_name,
+      salary: result.salary_max,
+      location: result.location.display_name,
+      category: result.category.label.replace("Jobs", ""),
+      contractTime: capitalise(result.contract_time.replace("_", " ")),
+      contractType: capitalise(result.contract_type),
+      link: result.redirect_url,
+    });
+
+    alert("Application Submitted");
+  };
+
+  const handleSaveJob = async (e) => {
+    e.preventDefault();
+    await saveJob({
+      adRef: result.adref,
+      title: result.title,
+      company: result.company.display_name,
+      salary: result.salary_max,
+      location: result.location.display_name,
+      category: result.category.label.replace("Jobs", ""),
+      contractTime: capitalise(result.contract_time.replace("_", " ")),
+      contractType: capitalise(result.contract_type),
+      link: result.redirect_url,
+    });
+
+    alert("Job Saved");
+  };
+
   return (
     <div>
       <hr />
@@ -96,16 +135,9 @@ export default function JobDescription({ result }) {
         </ul>
       </div>
       <div className="description-button-container">
-        <button>Apply</button>
-        <button>Save</button>
+        <button onClick={handleSubmitApplication}>Apply</button>
+        <button onClick={handleSaveJob}>Save</button>
       </div>
     </div>
   );
 }
-
-// Maternity/Paternity Leave: Family-friendly time off.
-// Employee Well-being Programs: Holistic wellness initiatives.
-// Employee Discounts: Cost-saving perks.
-// Professional Development: Skill enhancement opportunities.
-// Employee Recognition: Rewarding exceptional performance.
-// Flexible Working Options: Work-life balance flexibility.
