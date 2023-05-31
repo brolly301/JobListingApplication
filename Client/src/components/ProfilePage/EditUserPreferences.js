@@ -1,7 +1,5 @@
-import { useState, useContext } from "react";
 import "../../CSS/ProfilePage/UserPreferences.css";
 import { editPreferences } from "../../APIs/profile";
-import UserDetailsContext from "../../context/userDetails";
 import useUserContext from "../../hooks/useUserContext";
 
 export default function UserPreferences({ onEdit }) {

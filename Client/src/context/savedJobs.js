@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { getSavedJobs } from "../APIs/jobs";
+import { getApplications, getSavedJobs } from "../APIs/jobs";
 import useUserContext from "../hooks/useUserContext";
 
 const SavedJobContext = createContext();
@@ -44,10 +44,27 @@ export function SavedJobProvider({ children }) {
         link: res.link,
       });
     });
-  }, []);
+  }, [userData.user]);
+
+  useEffect(() => {
+    const applications = getApplications((res) => {
+      setApplications({
+        adref: res.adRef,
+        title: res.title,
+        company: res.company,
+        salary: res.salary,
+        location: res.location,
+        category: res.category,
+        contractTime: res.contractTime,
+        contractType: res.contractType,
+        link: res.link,
+      });
+    });
+  }, [userData.user]);
 
   const valuesToShare = {
     savedJobs,
+    applications,
   };
 
   return (

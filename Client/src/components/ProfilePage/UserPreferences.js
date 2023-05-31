@@ -1,8 +1,6 @@
 import "../../CSS/ProfilePage/UserPreferences.css";
 import { useState, useContext } from "react";
-import UserDetailsContext from "../../context/userDetails";
 import EditUserPreferences from "./EditUserPreferences";
-import { getPreferences } from "../../APIs/profile";
 import useUserContext from "../../hooks/useUserContext";
 
 export default function UserPreferences() {
