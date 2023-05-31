@@ -19,12 +19,12 @@
   margin-top: -90px;
 }
 
-hr {
+.hr {
   margin-top: 30px;
   padding-bottom: 10px;
 }
 
-h4 {
+.search-results {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 0px;

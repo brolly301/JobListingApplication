@@ -1,14 +1,17 @@
 import "../../CSS/JobPage/JobDescription.css";
 import { saveJob, submitApplication } from "../../APIs/jobs";
+import useSavedJobsContext from "../../hooks/useSavedJobsContext";
 
 export default function JobDescription({ result }) {
+  const { setSavedJobs, setApplications, updateJobs } = useSavedJobsContext();
+
   const capitalise = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   const handleSubmitApplication = async (e) => {
     e.preventDefault();
-    await submitApplication({
+    const res = await submitApplication({
       adRef: result.adref,
       title: result.title,
       company: result.company.display_name,
@@ -19,13 +22,13 @@ export default function JobDescription({ result }) {
       contractType: capitalise(result.contract_type),
       link: result.redirect_url,
     });
-
+    updateJobs(setApplications, res);
     alert("Application Submitted");
   };
 
   const handleSaveJob = async (e) => {
     e.preventDefault();
-    await saveJob({
+    const res = await saveJob({
       adRef: result.adref,
       title: result.title,
       company: result.company.display_name,
@@ -36,7 +39,7 @@ export default function JobDescription({ result }) {
       contractType: capitalise(result.contract_type),
       link: result.redirect_url,
     });
-
+    updateJobs(setSavedJobs, res);
     alert("Job Saved");
   };
 

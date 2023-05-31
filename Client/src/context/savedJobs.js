@@ -2,76 +2,40 @@ import { createContext, useEffect, useState } from "react";
 import { getApplications, getSavedJobs } from "../APIs/jobs";
 import useUserContext from "../hooks/useUserContext";
 
-const SavedJobContext = createContext();
+const SavedJobsContext = createContext();
 
-export function SavedJobProvider({ children }) {
+export function SavedJobsProvider({ children }) {
   const { userData } = useUserContext();
 
-  const [savedJobs, setSavedJobs] = useState({
-    adref: "",
-    title: "",
-    company: "",
-    salary: 0,
-    location: "",
-    category: "",
-    contractTime: "",
-    contractType: "",
-    link: "",
-  });
-  const [applications, setApplications] = useState({
-    adref: "",
-    title: "",
-    company: "",
-    salary: 0,
-    location: "",
-    category: "",
-    contractTime: "",
-    contractType: "",
-    link: "",
-  });
+  const [savedJobs, setSavedJobs] = useState([]);
+
+  const [applications, setApplications] = useState([]);
+
+  const updateJobs = (state, job) => {
+    state((jobs) => [...jobs, job]);
+  };
 
   useEffect(() => {
-    const savedJobs = getSavedJobs((res) => {
-      setSavedJobs({
-        adref: res.adRef,
-        title: res.title,
-        company: res.company,
-        salary: res.salary,
-        location: res.location,
-        category: res.category,
-        contractTime: res.contractTime,
-        contractType: res.contractType,
-        link: res.link,
-      });
-    });
-  }, [userData.user]);
+    const saveJobs = getSavedJobs().then((res) => setSavedJobs(res));
+  }, [userData.user || savedJobs]);
 
   useEffect(() => {
-    const applications = getApplications((res) => {
-      setApplications({
-        adref: res.adRef,
-        title: res.title,
-        company: res.company,
-        salary: res.salary,
-        location: res.location,
-        category: res.category,
-        contractTime: res.contractTime,
-        contractType: res.contractType,
-        link: res.link,
-      });
-    });
-  }, [userData.user]);
+    const applications = getApplications().then((res) => setApplications(res));
+  }, [userData.user || applications]);
 
   const valuesToShare = {
     savedJobs,
     applications,
+    setSavedJobs,
+    setApplications,
+    updateJobs,
   };
 
   return (
-    <SavedJobContext.Provider value={valuesToShare}>
+    <SavedJobsContext.Provider value={valuesToShare}>
       {children}
-    </SavedJobContext.Provider>
+    </SavedJobsContext.Provider>
   );
 }
 
-export default SavedJobContext;
+export default SavedJobsContext;

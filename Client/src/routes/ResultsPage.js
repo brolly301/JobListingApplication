@@ -8,9 +8,9 @@ export default function ResultsPage() {
     <div>
       <br />
       <JobSearch />
-      <hr />
+      <hr className="hr" />
       <ResultFilters />
-      <h4>
+      <h4 className="search-results">
         {/* Search results - {results.length} Jobs for Software Developer in Belfast */}
       </h4>
       {/* <SortBy>Sort By</SortBy> */}

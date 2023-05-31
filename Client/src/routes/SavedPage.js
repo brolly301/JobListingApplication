@@ -1,11 +1,15 @@
-import ApplicationShow from "../components/SavedPage/ApplicationShow";
-import SavedJobShow from "../components/SavedPage/SavedJobShow";
+import ApplicationList from "../components/SavedPage/ApplicationList";
+import SavedJobList from "../components/SavedPage/SavedJobList";
 
 export default function SavedPage() {
   return (
     <div>
-      <SavedJobShow />
-      <ApplicationShow />
+      <h1 style={{ textDecoration: "underline" }}>Saved Jobs</h1>
+      <SavedJobList />
+      <br />
+      <br />
+      <h1 style={{ textDecoration: "underline" }}>Job Applications</h1>
+      <ApplicationList />
     </div>
   );
 }
