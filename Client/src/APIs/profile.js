@@ -86,7 +86,6 @@ export const editSkills = async ({
         body: JSON.stringify(updatedUser),
       }
     );
-    return await response.json();
   } catch (err) {
     throw new Error("This has failed.");
   }

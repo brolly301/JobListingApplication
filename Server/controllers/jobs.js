@@ -44,3 +44,8 @@ exports.getApplications = async (req, res) => {
     res.status(404).json();
   }
 };
+
+exports.deleteSavedJob = async (req, res) => {
+  await SavedJob.findByIdAndDelete(req.body.id);
+  res.status(200).json();
+};

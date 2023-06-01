@@ -15,6 +15,13 @@ export function SavedJobsProvider({ children }) {
     state((jobs) => [...jobs, job]);
   };
 
+  const updateDeletedJobs = (id) => {
+    const updatedResults = savedJobs.filter((job) => {
+      return job._id !== id;
+    });
+    setSavedJobs(updatedResults);
+  };
+
   useEffect(() => {
     const saveJobs = getSavedJobs().then((res) => setSavedJobs(res));
   }, [userData.user || savedJobs]);
@@ -29,6 +36,7 @@ export function SavedJobsProvider({ children }) {
     setSavedJobs,
     setApplications,
     updateJobs,
+    updateDeletedJobs,
   };
 
   return (

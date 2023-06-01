@@ -104,3 +104,22 @@ export const getApplications = async () => {
     throw new Error("This has failed.");
   }
 };
+
+export const deleteSavedJob = async (id) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/job/savedJobs`,
+      {
+        credentials: "include",
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      }
+    );
+  } catch (err) {
+    throw new Error(err);
+  }
+};

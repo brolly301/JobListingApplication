@@ -1,6 +1,14 @@
+import { deleteSavedJob } from "../../APIs/jobs";
 import useSavedJobsContext from "../../hooks/useSavedJobsContext";
 
 export default function SavedJobShow({ job }) {
+  const { setSavedJobs, updateDeletedJobs } = useSavedJobsContext();
+
+  const handleDelete = async () => {
+    await deleteSavedJob(job._id);
+    updateDeletedJobs(job._id);
+  };
+
   return (
     <div>
       <h2>{job.title}</h2>
@@ -11,6 +19,9 @@ export default function SavedJobShow({ job }) {
       <h3>{job.contractType}</h3>
       <h3>{job.location}</h3>
       <a href={job.link}>Adzuna Link</a>
+      <div>
+        <button onClick={handleDelete}>Delete</button>
+      </div>
     </div>
   );
 }
