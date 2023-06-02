@@ -1,0 +1,37 @@
+.application-container {
+  text-align: center;
+}
+
+.application-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.application-form > input {
+  margin-bottom: 20px;
+  height: 30px;
+}
+.application-form > textarea {
+  margin-bottom: 20px;
+  height: 30px;
+}
+
+.application-form > button {
+  margin-bottom: 20px;
+  height: 40px;
+  background-color: rgb(194, 226, 255);
+}
+
+.application-title {
+  text-align: center;
+}
+
+.application-fill-button {
+  height: 30px;
+  background-color: lightgray;
+  align-items: center;
+  width: 300px;
+  margin-bottom: 15px;
+}

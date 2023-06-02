@@ -1,14 +1,15 @@
-import HomePage from "./routes/HomePage";
-import RegisterPage from "./routes/RegisterPage";
-import ResultsPage from "./routes/ResultsPage";
-import LoginPage from "./routes/LoginPage";
-import JobPage from "./routes/JobPage";
+import HomePage from "./pages/HomePage";
+import RegisterPage from "./pages/RegisterPage";
+import ResultsPage from "./pages/ResultsPage";
+import LoginPage from "./pages/LoginPage";
+import JobPage from "./pages/JobPage";
 import "./index.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import ProfilePage from "./routes/ProfilePage";
-import SavedPage from "./routes/SavedPage";
+import ProfilePage from "./pages/ProfilePage";
+import SavedPage from "./pages/SavedPage";
 import useUserContext from "./hooks/useUserContext";
 import Navbar from "./components/Navbar";
+import ApplicationPage from "./pages/ApplicationPage";
 
 export default function App() {
   const { userData } = useUserContext();
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/search/result/:id" element={<JobPage />} />
         <Route path="/jobs" element={<SavedPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/application" element={<ApplicationPage />} />
         <Route
           path="/register"
           element={
