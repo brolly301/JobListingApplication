@@ -1,0 +1,10 @@
+.dropdown-closed {
+  width: 100px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+.dropdown-open {
+  /* position: inherit; */
+  border: 1px solid black;
+}
