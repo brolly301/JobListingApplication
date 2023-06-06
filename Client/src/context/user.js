@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { getUser } from "../APIs/authentication";
-import { getPreferences, getSkills } from "../APIs/profile";
+import { getPreferences } from "../APIs/profile";
 
 const UserContext = createContext();
 
@@ -45,17 +45,17 @@ export function UserContextProvider({ children }) {
       .catch((err) => console.log(err));
   }, [userData.user]);
 
-  useEffect(() => {
-    const data = getSkills().then((res) => {
-      setUserSkills({
-        workExperience: res.workExperience || "",
-        education: res.education || "",
-        skills: res.skills || "",
-        languages: res.languages || "",
-      });
-    });
-    // return () => data;
-  }, [userData.user]);
+  // useEffect(() => {
+  //   const data = getSkills().then((res) => {
+  //     setUserSkills({
+  //       workExperience: res.workExperience || "",
+  //       education: res.education || "",
+  //       skills: res.skills || "",
+  //       languages: res.languages || "",
+  //     });
+  //   });
+  //   // return () => data;
+  // }, [userData.user]);
 
   useEffect(() => {
     const data = getPreferences().then((res) => {
