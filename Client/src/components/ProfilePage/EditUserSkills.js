@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { editSkills } from "../../APIs/profile";
+import { editSkills } from "../../APIs/profile";
 import useUserContext from "../../hooks/useUserContext";
 
 export default function UserSkills({ onEdit }) {
@@ -11,7 +11,7 @@ export default function UserSkills({ onEdit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // editSkills(userSkills);
+    editSkills(userSkills);
     onEdit();
   };
 
