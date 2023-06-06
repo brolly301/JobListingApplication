@@ -6,15 +6,13 @@ import "../../CSS/HomePage/JobSearch.css";
 import useJobsContext from "../../hooks/useJobsContext";
 
 export default function JobSearch() {
-  const { handleSubmit, handleLocationSubmit, location } = useJobsContext();
+  const { handleSubmit, handleLocation, location } = useJobsContext();
 
-  const [result, setResult] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     jobLocation: "",
   });
-  const [longitude, setLongitude] = useState("");
-  const [latitude, setLatitude] = useState("");
+
   const redirect = useNavigate();
 
   //Read up on why the setForm function works for multiple states
@@ -29,15 +27,6 @@ export default function JobSearch() {
     e.preventDefault();
     handleSubmit(formData.title, formData.jobLocation);
     redirect("/search");
-  };
-
-  //Get current location in co-ordinates and convert to location
-  const handleLocation = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude);
-    });
-    handleLocationSubmit(longitude, latitude);
   };
 
   return (
@@ -58,7 +47,8 @@ export default function JobSearch() {
         <button
           type="button"
           onClick={handleLocation}
-          className="job-location-button">
+          className="job-location-button"
+        >
           <GoLocation style={{ fontSize: "19px" }} />
         </button>
         <button type="submit" className="job-search-button">

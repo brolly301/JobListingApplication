@@ -1,0 +1,25 @@
+.tile-container {
+  width: 1800px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  margin-bottom: 80px;
+  margin-top: 50px;
+  top: 100%;
+}
+
+.tile-section {
+  width: 420px;
+  height: 420px;
+}
+
+.tile-section > a > img {
+  width: 330px;
+  height: 330px;
+}
+
+.tile-section > h3 {
+  font-size: 40px;
+}

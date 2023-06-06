@@ -4,12 +4,12 @@ import axios from "axios";
 const getLocation = async (longitude, latitude) => {
   const response = await axios.get("https://geocode.maps.co/reverse?", {
     params: {
-      lat: latitude || 0,
-      lon: longitude || 0,
+      lat: latitude,
+      lon: longitude,
     },
   });
   console.log(response.data);
-  return response.data;
+  return await response.data;
 };
 
 export default getLocation;

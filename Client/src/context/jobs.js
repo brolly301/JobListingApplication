@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import JobResults from "../functions/AdzunaAPI";
 import getLocation from "../functions/GeocodingAPI";
 
@@ -7,6 +7,8 @@ const JobsContext = createContext();
 export function JobProvider({ children }) {
   const [location, setLocation] = useState("");
   const [results, setResults] = useState([]);
+  const [longitude, setLongitude] = useState(0);
+  const [latitude, setLatitude] = useState(0);
 
   //Function for setting input as results of API call
   const handleSubmit = async (term, jobLocation) => {
@@ -21,11 +23,19 @@ export function JobProvider({ children }) {
     setLocation(result.address.city || result.address.state);
   };
 
+  const handleLocation = async () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude);
+    });
+    await handleLocationSubmit(longitude, latitude);
+  };
+
   const valueToShare = {
     location,
     results,
     handleSubmit,
-    handleLocationSubmit,
+    handleLocation,
   };
 
   return (

@@ -1,5 +1,6 @@
 import JobSearch from "../components/HomePage/JobSearch";
 import JobCategories from "../components/HomePage/JobCategories";
+import JobTiles from "../components/HomePage/JobTiles";
 import "../CSS/HomePage/JobSearch.css";
 
 export default function HomePage() {
@@ -13,8 +14,9 @@ export default function HomePage() {
         ultimate employment destination. Apply now!
       </h4>
       <hr className="job-hr" />
-      {/* <JobList results={results} /> */}
       <JobCategories />
+      <hr />
+      <JobTiles />
     </div>
   );
 }

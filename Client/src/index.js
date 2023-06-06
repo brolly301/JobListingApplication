@@ -13,8 +13,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <SavedJobsProvider>
       <JobProvider>
         <BrowserRouter>
-          {/* <App /> */}
-          <Dropdown />
+          <App />
+          {/* <Dropdown /> */}
         </BrowserRouter>
       </JobProvider>
     </SavedJobsProvider>

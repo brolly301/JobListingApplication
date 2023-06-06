@@ -10,6 +10,7 @@ import SavedPage from "./pages/SavedPage";
 import useUserContext from "./hooks/useUserContext";
 import Navbar from "./components/Navbar";
 import ApplicationPage from "./pages/ApplicationPage";
+import Footer from "./components/Footer";
 
 export default function App() {
   const { userData } = useUserContext();
@@ -35,6 +36,7 @@ export default function App() {
           element={userData.user ? <Navigate replace to="/" /> : <LoginPage />}
         />
       </Routes>
+      <Footer />
     </>
   );
 }
