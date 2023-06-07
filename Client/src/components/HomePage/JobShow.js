@@ -9,8 +9,7 @@ export default function JobShow({ result }) {
     <div className="job-show">
       <Link
         to={`/search/result/${result.adref.slice(-20)}`}
-        state={{ result: result }}
-      >
+        state={{ result: result }}>
         <div className="job-title">
           <h3>{result.title}</h3>
         </div>

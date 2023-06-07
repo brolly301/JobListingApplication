@@ -1,6 +1,7 @@
 import "../../CSS/JobPage/JobDescription.css";
 import { saveJob, submitApplication } from "../../APIs/jobs";
 import useSavedJobsContext from "../../hooks/useSavedJobsContext";
+import { Link } from "react-router-dom";
 
 export default function JobDescription({ result }) {
   const { setSavedJobs, setApplications, updateJobs } = useSavedJobsContext();
@@ -138,7 +139,11 @@ export default function JobDescription({ result }) {
         </ul>
       </div>
       <div className="description-button-container">
-        <button onClick={handleSubmitApplication}>Apply</button>
+        <Link
+          to={`/search/result/${result.adref.slice(-20)}/apply`}
+          state={{ result: result }}>
+          <button>Apply</button>
+        </Link>
         <button onClick={handleSaveJob}>Save</button>
       </div>
     </div>

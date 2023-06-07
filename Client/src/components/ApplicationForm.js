@@ -1,9 +1,19 @@
 import { useState } from "react";
 import "../CSS/ApplicationForm.css";
 import useUserContext from "../hooks/useUserContext";
+import { submitApplication } from "../APIs/jobs";
+import useSavedJobsContext from "../hooks/useSavedJobsContext";
+import { useLocation } from "react-router-dom";
 
 export default function ApplicationForm() {
   const { userData } = useUserContext();
+  const { setApplications, updateJobs } = useSavedJobsContext();
+  const location = useLocation();
+  const result = location.state.result;
+
+  const capitalise = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -24,8 +34,21 @@ export default function ApplicationForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const res = await submitApplication({
+      adRef: result.adref,
+      title: result.title,
+      company: result.company.display_name,
+      salary: result.salary_max,
+      location: result.location.display_name,
+      category: result.category.label.replace("Jobs", ""),
+      contractTime: capitalise(result.contract_time.replace("_", " ")),
+      contractType: capitalise(result.contract_type),
+      link: result.redirect_url,
+    });
+    updateJobs(setApplications, res);
+    alert("Application Submitted");
   };
 
   return (

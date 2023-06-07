@@ -24,7 +24,7 @@ export default function App() {
         <Route path="/search/result/:id" element={<JobPage />} />
         <Route path="/jobs" element={<SavedPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/application" element={<ApplicationPage />} />
+        <Route path="/search/result/:id/apply" element={<ApplicationPage />} />
         <Route
           path="/register"
           element={
