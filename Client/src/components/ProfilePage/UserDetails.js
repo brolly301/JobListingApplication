@@ -13,7 +13,7 @@ export default function UserDetails() {
 
   let content = (
     <div className="details-container">
-      <h2>User Details</h2>
+      <h2>Personal Details</h2>
       <div className="details-input-container">
         <label>Name:</label>
         <input

@@ -19,6 +19,7 @@ export function UserContextProvider({ children }) {
     location: "",
     jobTitle: "",
     jobType: "",
+    remote: "",
   });
 
   const [userSkills, setUserSkills] = useState({
@@ -26,6 +27,7 @@ export function UserContextProvider({ children }) {
     education: "",
     skills: "",
     languages: "",
+    drivingLicense: "",
   });
 
   useEffect(() => {

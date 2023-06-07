@@ -18,3 +18,9 @@
 .container > h2 {
   padding-left: 15px;
 }
+
+.edit-preferences-button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 30px;
+}

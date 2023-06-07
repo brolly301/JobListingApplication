@@ -1,6 +1,7 @@
 import "../../CSS/ProfilePage/UserPreferences.css";
 import { editPreferences } from "../../APIs/profile";
 import useUserContext from "../../hooks/useUserContext";
+import Dropdown from "../Dropdown";
 
 export default function UserPreferences({ onEdit }) {
   const { userPreferences, setUserPreferences } = useUserContext();
@@ -16,7 +17,28 @@ export default function UserPreferences({ onEdit }) {
   };
   const handleChange = (e) => {
     setUserPreferences({ ...userPreferences, [e.target.name]: e.target.value });
+    console.log(userPreferences);
   };
+
+  const dropdownChange = (selection) => {
+    setUserPreferences({ ...userPreferences, remote: selection });
+    console.log(userPreferences.remote);
+  };
+
+  const remoteOptions = [
+    {
+      label: "Remote",
+      value: "remote",
+    },
+    {
+      label: "Office",
+      value: "office",
+    },
+    {
+      label: "Hybrid",
+      value: "hybrid",
+    },
+  ];
 
   return (
     <div>
@@ -52,14 +74,20 @@ export default function UserPreferences({ onEdit }) {
             defaultValue={userPreferences?.jobType}
             name="jobType"
           />
-          <input
+          <Dropdown
+            options={remoteOptions}
+            onChange={dropdownChange}
+            defaultValue={userPreferences?.remote}
+            name="remote"
+          />
+          {/* <input
             onChange={handleChange}
             className="input-box"
             type="text"
             placeholder="Remote"
             name="remote"
-          />
-          <button className="input-box" type="submit">
+          /> */}
+          <button className="edit-preferences-button" type="submit">
             Save
           </button>
           <button type="button" onClick={handleEdit} className="input-box">

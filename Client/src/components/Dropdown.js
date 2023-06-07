@@ -2,25 +2,9 @@ import { useState } from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import "../CSS/Dropdown.css";
 
-export default function Dropdown() {
+export default function Dropdown({ options, onChange, ...rest }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selection, setSelection] = useState(null);
-
-  //Values for the dropdown
-  const options = [
-    {
-      label: "Red",
-      value: "red",
-    },
-    {
-      label: "Green",
-      value: "green",
-    },
-    {
-      label: "Blue",
-      value: "blue",
-    },
-  ];
 
   //Closes the dropdown by setting it to the opposite of its current value
   const handleOpenClick = (e) => {
@@ -30,6 +14,7 @@ export default function Dropdown() {
   //Setting the users selection and turning the isOpen state to false so it closes
   const handleOptionClick = (option) => {
     setSelection(option);
+    onChange(option.label);
     setIsOpen(false);
   };
 
@@ -39,7 +24,8 @@ export default function Dropdown() {
       <div
         className="dropdown-open"
         onClick={() => handleOptionClick(option)}
-        key={option.value}>
+        key={option.value}
+      >
         {option.label}
       </div>
     );
@@ -49,10 +35,14 @@ export default function Dropdown() {
   //value is set to true through the onClick property on the div
   return (
     <div>
-      <div onClick={handleOpenClick} className="dropdown-closed">
-        {selection?.label || "Search..."}
-      </div>
-      {isOpen && <div>{renderedList}</div>}
+      <input
+        {...rest}
+        onClick={handleOpenClick}
+        className="dropdown-closed"
+        placeholder={selection?.label || "Search..."}
+        readOnly
+      ></input>
+      {isOpen && <div className="dropdown-list-container">{renderedList}</div>}
     </div>
   );
 }

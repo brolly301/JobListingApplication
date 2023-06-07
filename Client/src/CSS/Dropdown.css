@@ -1,10 +1,19 @@
 .dropdown-closed {
-  width: 100px;
-  height: 20px;
+  height: 30px;
   border: 1px solid black;
+  position: relative;
+  width: 98.5%;
 }
 
 .dropdown-open {
-  /* position: inherit; */
+  padding: 8px;
+}
+
+.dropdown-open:hover {
+  padding: 8px;
+  background-color: rgb(212, 209, 209);
+}
+
+.dropdown-list-container {
   border: 1px solid black;
 }

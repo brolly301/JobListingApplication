@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { editSkills } from "../../APIs/profile";
 import useUserContext from "../../hooks/useUserContext";
+import Dropdown from "../Dropdown";
 
 export default function UserSkills({ onEdit }) {
   const { userSkills, setUserSkills } = useUserContext();
@@ -14,6 +15,21 @@ export default function UserSkills({ onEdit }) {
     editSkills(userSkills);
     onEdit();
   };
+
+  const dropdownChange = (selection) => {
+    setUserSkills({ ...userSkills, drivingLicense: selection });
+  };
+
+  const drivingLicenseOption = [
+    {
+      label: "Yes",
+      value: "yes",
+    },
+    {
+      label: "No",
+      value: "no",
+    },
+  ];
 
   return (
     <div>
@@ -48,10 +64,11 @@ export default function UserSkills({ onEdit }) {
             onChange={handleChange}
             defaultValue={userSkills?.languages || ""}
           />
-          <input
-            type="text"
-            placeholder="Driving License"
-            name="drivingLicense"
+          <Dropdown
+            options={drivingLicenseOption}
+            onChange={dropdownChange}
+            defaultValue={userSkills?.drivingLicense}
+            name="remote"
           />
           <button type="submit">Save</button>
           <button type="button" onClick={onEdit}>

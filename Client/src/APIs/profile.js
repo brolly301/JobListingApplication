@@ -30,8 +30,9 @@ export const editPreferences = async ({
   location,
   jobTitle,
   jobType,
+  remote,
 } = {}) => {
-  const updatedUser = { salary, location, jobTitle, jobType };
+  const updatedUser = { salary, location, jobTitle, jobType, remote };
   try {
     const response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/profile/editPreferences`,
@@ -71,8 +72,15 @@ export const editSkills = async ({
   education,
   skills,
   languages,
+  drivingLicense,
 } = {}) => {
-  const updatedUser = { workExperience, education, skills, languages };
+  const updatedUser = {
+    workExperience,
+    education,
+    skills,
+    languages,
+    drivingLicense,
+  };
   try {
     const response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/profile/editSkills`,
