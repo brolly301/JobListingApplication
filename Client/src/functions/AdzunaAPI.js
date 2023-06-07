@@ -8,7 +8,7 @@ const JobResults = async (term, jobLocation) => {
       params: {
         app_id: "6c909a68",
         app_key: "27f3682a5ac4b72c7a816d5c568d14c6",
-        results_per_page: 20,
+        results_per_page: 50,
         what: term,
         where: jobLocation,
       },
