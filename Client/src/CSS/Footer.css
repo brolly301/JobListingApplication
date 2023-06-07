@@ -1,7 +1,28 @@
 .footer-container {
   background-color: grey;
   position: absolute;
-  height: 100px;
+  height: 11%;
   top: 100%;
   width: 100%;
+}
+
+.footer-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-hr {
+  border-color: black;
+  margin: 20px 0;
+  opacity: 0.3;
+}
+
+.footer-end {
+  text-align: center;
 }
