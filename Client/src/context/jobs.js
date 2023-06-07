@@ -10,6 +10,13 @@ export function JobProvider({ children }) {
   const [longitude, setLongitude] = useState(0);
   const [latitude, setLatitude] = useState(0);
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude);
+    });
+  }, []);
+
   //Function for setting input as results of API call
   const handleSubmit = async (term, jobLocation) => {
     const result = await JobResults(term, jobLocation);
@@ -24,10 +31,6 @@ export function JobProvider({ children }) {
   };
 
   const handleLocation = async () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude);
-    });
     await handleLocationSubmit(longitude, latitude);
   };
 
