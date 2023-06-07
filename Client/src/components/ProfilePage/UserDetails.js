@@ -12,15 +12,21 @@ export default function UserDetails() {
   };
 
   let content = (
-    <div className="container1">
-      <h1 style={{ textAlign: "center", margin: "10px" }}>User Details</h1>
-      <div className="input-container">
-        <h3>
-          {userData.firstName} {userData.lastName}
-        </h3>
-        <h3>{userData.email}</h3>
-        <h3>{userData.location}</h3>
-        <h3>{userData.phoneNumber}</h3>
+    <div className="details-container">
+      <h2>User Details</h2>
+      <div className="details-input-container">
+        <label>Name:</label>
+        <input
+          type="text"
+          readOnly
+          placeholder={`${userData.firstName} ${userData.lastName}`}
+        />
+        <label>Email:</label>
+        <input type="text" readOnly placeholder={userData.email} />
+        <label>Location:</label>
+        <input type="text" readOnly placeholder={userData.location} />
+        <label>Phone Number:</label>
+        <input type="text" readOnly placeholder={userData.phoneNumber} />
         <button onClick={handleEdit}>Edit</button>
       </div>
     </div>
@@ -31,4 +37,13 @@ export default function UserDetails() {
   }
 
   return <div>{content}</div>;
+}
+
+{
+  /* <h3>
+          {userData.firstName} {userData.lastName}
+        </h3>
+        <h3>{userData.email}</h3>
+        <h3>{userData.location}</h3>
+        <h3>{userData.phoneNumber}</h3> */
 }

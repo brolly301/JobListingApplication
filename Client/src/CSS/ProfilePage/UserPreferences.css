@@ -11,5 +11,10 @@
   border: 1px solid black;
   width: 420px;
   margin: 10px auto;
+  padding-left: 5px;
   height: 540px;
+}
+
+.container > h2 {
+  padding-left: 15px;
 }

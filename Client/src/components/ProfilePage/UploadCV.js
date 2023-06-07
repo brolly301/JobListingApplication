@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import "../../CSS/ProfilePage/CV.css";
 
 export default function UploadCV() {
   const [file, setFile] = useState(null);
@@ -26,8 +27,8 @@ export default function UploadCV() {
   };
 
   return (
-    <div>
-      <h3>Upload CV</h3>
+    <div className="cv-container">
+      <h2>Upload CV</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data" method="POST">
         <input onChange={handleChange} type="file" name="myfile" id="myfile" />
         <button type="submit">Upload</button>

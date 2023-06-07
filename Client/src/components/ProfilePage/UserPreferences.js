@@ -14,7 +14,7 @@ export default function UserPreferences() {
 
   let content = (
     <div className="container">
-      <h1 style={{ textAlign: "center", margin: "10px" }}>User Preferences</h1>
+      <h2>Preferences</h2>
       <div className="input-container">
         <label>Salary:</label>
         <input

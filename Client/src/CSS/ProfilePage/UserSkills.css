@@ -1,25 +1,26 @@
-.details-container {
+.skills-container {
   border: 1px solid black;
   width: 420px;
-  height: 400px;
+  margin: 10px auto;
+  height: 550px;
 }
 
-.details-container > h2 {
+.skills-container > h2 {
   text-align: left;
   margin-left: 15px;
 }
 
-.details-input-container {
+.skills-input-container {
   display: flex;
   flex-direction: column;
   margin: 0 15px;
 }
 
-.details-input-container > input {
+.skills-input-container > input {
   margin-bottom: 10px;
   height: 30px;
 }
 
-.details-input-container > button {
+.skills-input-container > button {
   height: 30px;
 }
